@@ -10,4 +10,4 @@
 *.zip
 
 # IntelliJ
-.idea/**/workspace.xml
+.idea
