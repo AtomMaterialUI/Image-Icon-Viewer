@@ -24,7 +24,7 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 
 
 intellij {
-    pluginName 'IconViewer'
+    pluginName 'IconViewerFork'
     version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
 //    sameSinceUntilBuild false
