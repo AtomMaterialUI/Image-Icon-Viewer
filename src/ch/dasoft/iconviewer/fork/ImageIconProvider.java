@@ -1,7 +1,6 @@
-package ch.dasoft.iconviewer;
+package ch.dasoft.iconviewer.fork;
 
 import com.intellij.ide.IconProvider;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.IconUtil;

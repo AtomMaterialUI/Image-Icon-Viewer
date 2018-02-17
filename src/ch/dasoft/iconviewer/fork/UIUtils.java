@@ -1,4 +1,4 @@
-package ch.dasoft.iconviewer;
+package ch.dasoft.iconviewer.fork;
 
 /**
  * Created by David Sommer on 19.05.17.
