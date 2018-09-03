@@ -1,13 +1,16 @@
-# out Folder for Plugin
-/out/*
-
-# Compiled class file
-# Log file
-# BlueJ files
-# Mobile Tools for Java (J2ME)
-# Package Files #
-*.jar
-*.zip
+# macOS
+.DS_Store
 
 # IntelliJ
-.idea
+out/
+.idea/
+*.iml
+
+# Gradle
+.gradle/
+build/
+classes/
+
+#gradle.properties
+*.icls
+src/test/resources/

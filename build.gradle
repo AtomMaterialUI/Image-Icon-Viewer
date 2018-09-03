@@ -1,12 +1,23 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'http://dl.bintray.com/content/aalmiray/kordamp' }
+    }
+    dependencies {
+        classpath 'org.kordamp:markdown-gradle-plugin:1.0.0'
+    }
+}
+
 plugins {
     id 'org.jetbrains.intellij' version '0.2.17'
 }
-
 
 repositories {
     mavenCentral()
     maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
 }
+
+apply plugin: 'org.kordamp.markdown.convert'
 
 
 sourceSets {
@@ -22,9 +33,13 @@ sourceSets {
 
 version = System.getenv("pluginVersion") ?: pluginVersion
 
+markdownToHtml {
+    sourceDir new File("$projectDir/docs")
+    outputDir new File("$projectDir/docs")
+}
 
 intellij {
-    pluginName 'IconViewerFork'
+    pluginName 'Image Icon Viewer'
     version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
 //    sameSinceUntilBuild false
@@ -36,6 +51,7 @@ intellij {
         version "$version"
         sinceBuild System.getenv("pluginSinceBuild") ?: sinceBuildP
 //        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
+        changeNotes file("$projectDir/docs/CHANGELOG.html").text
     }
 
     publishPlugin {

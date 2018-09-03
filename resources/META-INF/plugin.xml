@@ -1,53 +1,35 @@
 <idea-plugin>
-  <id>ch.dasoft.iconviewer.fork</id>
-  <name>IconViewerFork</name>
-  <version>1.2</version>
-  <vendor email="heliosaian@gmail.com">Mallowigi</vendor>
+    <id>com.mallowigi.imageicon</id>
+    <name>Image Icon Viewer</name>
+    <version>1.0</version>
+    <vendor email="heliosaian@gmail.com">Mallowigi</vendor>
 
-  <description><![CDATA[
-
-  <h1>IconViewer</h1>
+    <description><![CDATA[
+     <h1>Image Icon Viewer</h1>
   <br/>
-  <a href="https://github.com/davidsommer/IconViewer">GitHub</a>
+  <h2>Preview project images right inside the Project View or Tabs.</h2>
   <br/>
-  Preview project images as an icon in your project explorer.
-  Helpful if you have a lot of icons in your project, <b>IconViewer</b> gives you a nice preview icon.
-  <br/>
-  Bigger images are scaled to 16x16, supported are:
+  <p>This is particularly helpful when working with icons, as it gives you a preview without needing to open the file.</p>
+  <p>Bigger images are scaled to 16x16, supported extensions are:
   <br/>
   <ul>
   <li>*.gif</li>
   <li>*.png</li>
   <li>*.bmp</li>
   <li>*.jpg</li>
-  <li>*.jpeg</li>
   <li>*.wbmp</li>
   <li>*.svg</li>
   </ul>
-    ]]></description>
+]]></description>
 
-  <change-notes><![CDATA[
-   <ul>
-   <li>06.09.2017 Version 1.2 - fix error in mac and added gradle support</li>
-   <li>06.09.2017 Version 1.13 - clean up an added svg support</li>
-   <li>06.07.2017 Version 1.12 - bugfix ignore images from external jars</li>
-   <li>23.05.2017 Version 1.11 - bugfix, platform support</li>
-   <li>22.05.2017 Version 1.1  - bugfixes</li>
-   <li>19.05.2017 Version 1.0  - init</li>
-   </ul>
-    ]]>
-  </change-notes>
+    <change-notes><![CDATA[]]></change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="145.0"/>
+    <idea-version since-build="145.0"/>
 
-  <!-- Make plugin available to all IntelliJ IDEs
-     http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
-  <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.platform</depends>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-    <iconProvider implementation="ch.dasoft.iconviewer.fork.ImageIconProvider"/>
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <iconProvider implementation="com.mallowigi.imageicon.ImageIconProvider"/>
+    </extensions>
 
 </idea-plugin>

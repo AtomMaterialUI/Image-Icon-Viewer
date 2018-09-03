@@ -1,4 +1,4 @@
-package ch.dasoft.iconviewer.fork;
+package com.mallowigi.imageicon;
 
 import com.intellij.openapi.util.io.FileUtilRt;
 
@@ -9,7 +9,7 @@ import java.util.Arrays;
  *
  * @author davidsommer
  */
-class UIUtils {
+class ImageUtils {
 
   private static final String[] IMAGE_EXTENSIONS = {"*.jpeg",
       "jpg",
@@ -22,7 +22,7 @@ class UIUtils {
 
   static boolean isImage(final String filename) {
     final String fileExt = FileUtilRt.getExtension(filename);
-    return Arrays.stream(UIUtils.IMAGE_EXTENSIONS).anyMatch(fileExt::equalsIgnoreCase);
+    return Arrays.stream(ImageUtils.IMAGE_EXTENSIONS).anyMatch(fileExt::equalsIgnoreCase);
   }
 
   static boolean isSvg(final String filename) {

@@ -1,4 +1,4 @@
-package ch.dasoft.iconviewer.fork;
+package com.mallowigi.imageicon;
 
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.util.Ref;
@@ -43,9 +43,9 @@ public class ImageIconProvider extends IconProvider {
       final String fileName = containingFile.getName();
 
       try {
-        if (UIUtils.isImage(fileName)) {
+        if (ImageUtils.isImage(fileName)) {
           image = ImageLoader.loadFromStream(new BufferedInputStream(new FileInputStream(canonicalPath)));
-        } else if (UIUtils.isSvg(fileName)) {
+        } else if (ImageUtils.isSvg(fileName)) {
           image = loadSVG(containingFile, canonicalPath);
         }
       } catch (final IOException e) {
