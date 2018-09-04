@@ -23,6 +23,15 @@
   <component name="ch.raffael.plugins.idea.runpopup.RunConfigurationUseTracker">
     <option name="runConfInfo">
       <map>
+        <entry key="Gradle.IconViewer [buildPlugin]">
+          <value>
+            <RunConfInfo>
+              <option name="confId" value="Gradle.IconViewer [buildPlugin]" />
+              <option name="executorId" value="Run" />
+              <option name="timestamp" value="1536089529949" />
+            </RunConfInfo>
+          </value>
+        </entry>
         <entry key="Gradle.IconViewer [runIde]">
           <value>
             <RunConfInfo>
