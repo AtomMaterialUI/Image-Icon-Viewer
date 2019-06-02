@@ -1,6 +1,7 @@
 # Changelog
 ----
 
+- 3.0 - 2019.2 support
 - 2.2 - 2019.1 support
 - 2.1 - 2018.3 support
 - 2.0 - Add SVG Support
