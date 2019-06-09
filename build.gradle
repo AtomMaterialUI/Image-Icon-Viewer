@@ -35,7 +35,7 @@ buildscript {
 }
 
 plugins {
-    id 'org.jetbrains.intellij' version '0.4.8'
+    id 'org.jetbrains.intellij' version '0.4.9'
 }
 
 repositories {
@@ -55,7 +55,8 @@ sourceSets {
         java.srcDir 'test'
     }
 }
-
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 version = System.getenv("pluginVersion") ?: pluginVersion
 

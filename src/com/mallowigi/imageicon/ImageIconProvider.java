@@ -37,9 +37,10 @@ import com.intellij.psi.PsiFileSystemItem;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ImageLoader;
 import com.intellij.util.SVGLoader;
-import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.JBUIScale;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -78,6 +79,7 @@ public class ImageIconProvider extends IconProvider implements DumbAware {
     return Arrays.stream(IMAGE_EXTENSIONS).anyMatch(fileExt::equalsIgnoreCase);
   }
 
+  @Nullable
   @Override
   public final Icon getIcon(@NotNull final PsiElement element, final int flags) {
     final PsiFile containingFile = element.getContainingFile();
@@ -112,7 +114,7 @@ public class ImageIconProvider extends IconProvider implements DumbAware {
     } catch (final MalformedURLException ex) {
       ex.printStackTrace();
     }
-    return SVGLoader.loadHiDPI(url.get(), new FileInputStream(canonicalPath), JBUI.ScaleContext.create());
+    return SVGLoader.loadHiDPI(url.get(), new FileInputStream(canonicalPath), JBUIScale.ScaleContext.create());
   }
 
   @SuppressWarnings({"OverlyComplexBooleanExpression",
