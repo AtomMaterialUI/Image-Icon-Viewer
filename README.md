@@ -4,7 +4,7 @@
 
 This is a Jetbrains products' plugin to preview image files directly inside the Project View.
 
-![light.png](docs/light.png) ![darcula.png](docs/darcula.png)
+![light.png](img/light.png) ![darcula.png](img/darcula.png)
 
 This is particularly helpful when working with a lot of icons.
 
