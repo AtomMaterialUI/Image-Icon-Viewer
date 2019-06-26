@@ -37,7 +37,7 @@ import com.intellij.psi.PsiFileSystemItem;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ImageLoader;
 import com.intellij.util.SVGLoader;
-import com.intellij.util.ui.JBUIScale;
+import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -114,7 +114,7 @@ public class ImageIconProvider extends IconProvider implements DumbAware {
     } catch (final MalformedURLException ex) {
       ex.printStackTrace();
     }
-    return SVGLoader.loadHiDPI(url.get(), new FileInputStream(canonicalPath), JBUIScale.ScaleContext.create());
+    return SVGLoader.loadHiDPI(url.get(), new FileInputStream(canonicalPath), JBUI.ScaleContext.create());
   }
 
   @SuppressWarnings({"OverlyComplexBooleanExpression",
