@@ -15,3 +15,7 @@ classes/
 *.icls
 src/test/resources/
 gradle/
+
+.idea
+
+publishToken

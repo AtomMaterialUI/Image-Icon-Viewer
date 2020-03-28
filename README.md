@@ -1,8 +1,17 @@
 # Image Icon Viewer
 
+<h1 align="center">
+  <br>
+    <img src="https://raw.githubusercontent.com/mallowigi/Image-Icon-Viewer/master/src/main/resources/META-INF/pluginIcon.svg?sanitize=true" alt="logo" width="200">
+  <br><br>
+  Image Icon Viewer
+  <br>
+  <br>
+</h1>
+
 ![pluginIcon.svg](resources/META-INF/pluginIcon.svg)
 
-This is a Jetbrains products' plugin to preview image files directly inside the Project View.
+This is a JetBrains products' plugin to preview image files directly inside the Project View.
 
 ![light.png](img/light.png) ![darcula.png](img/darcula.png)
 
