@@ -85,8 +85,7 @@ public final class ExtendedImageConverter implements ImageToIconConverter {
   @Override
   @Nullable
   public Icon convert(final VirtualFile canonicalFile, final String canonicalPath) {
-    try {
-      final ImageInputStream imageInputStream = ImageIO.createImageInputStream(new File(canonicalPath));
+    try (final ImageInputStream imageInputStream = ImageIO.createImageInputStream(new File(canonicalPath))) {
       final Iterator<ImageReader> imageReaders = ImageIO.getImageReaders(imageInputStream);
 
       while (imageReaders.hasNext()) {
