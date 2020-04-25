@@ -11,13 +11,11 @@
 
 ![pluginIcon.svg](resources/META-INF/pluginIcon.svg)
 
-This is a JetBrains products' plugin to preview image files directly inside the Project View.
+**Preview images and icons directly from the Project View.**
 
-![light.png](img/light.png) ![darcula.png](img/darcula.png)
+## Features
 
-This is particularly helpful when working with a lot of icons.
-
-Supports images with the following supported formats:
+Supports the following formats:
 
  - *.gif
  - *.png 
@@ -25,6 +23,33 @@ Supports images with the following supported formats:
  - *.jpg
  - *.wbmp
  - *.svg
+ - *.tiff
+ - *.bigtiff
+ - *.dcx
+ - *.icns
+ - *.ico
+ - *.jbig2
+ - *.pam
+ - *.pbm
+ - *.pcx
+ - *.pgm
+ - *.pnm
+ - *.ppm
+ - *.psd
+ - *.rgbe
+ - *.tga
+ - *.tif
+ - *.tiff
+ - *.wbmp
+ - *.xbm
+ - *.xpm
+ 
+## Screenshots
+
+![light.png](img/light.png) ![darcula.png](img/darcula.png)
+
+![example.png](img/example.png)
+
 
 ## Acknowledgements
 Original plugin at https://github.com/davidsommer/IconViewer

@@ -1,13 +1,52 @@
 # Changelog
 ----
 
-- 3.0 - 2019.2 support
-- 2.2 - 2019.1 support
-- 2.1 - 2018.3 support
-- 2.0 - Add SVG Support
-- 1.2 - fix error in mac and added gradle support
-- 1.13 - clean up an added svg support
-- 1.12 - bugfix ignore images from external jars
-- 1.11 - bugfix, platform support
-- 1.1  - bugfixes
-- 1.0  - init
+# 4.0
+- Refactor the project to support more formats
+- Now supports images and icons for all sizes!
+- Supports now more formats: 
+    - PSD
+    - TIFF 
+    - PCX
+    - TGA
+    - ICNS
+    - ICO & CUR
+    
+Many thanks to Jonathan Lermitage
+
+# 3.0 
+ 
+- 2019.2 support
+
+# 2.2 
+
+- 2019.1 support
+
+# 2.1
+
+- 2018.3 support
+
+# 2.0
+
+- Add SVG Support
+
+# 1.2  
+
+- Fix error in mac 
+- Added gradle support
+
+# 1.13 
+
+- Clean up and added svg support
+
+# 1.12 
+
+- Bug Fix: ignore images from external jars
+
+# 1.1  
+
+- Various bugfixes
+
+# 1.0  
+
+- Project start
