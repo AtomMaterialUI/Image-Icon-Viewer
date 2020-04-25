@@ -1,7 +1,7 @@
 # Changelog
 ----
 
-# 4.0
+# 8.0
 - Refactor the project to support more formats
 - Now supports images and icons for all sizes!
 - Supports now more formats: 
@@ -11,9 +11,15 @@
     - TGA
     - ICNS
     - ICO & CUR
-    
-Many thanks to Jonathan Lermitage
 
+# 7.0
+
+- 2020.1 support
+
+# 5.0 
+
+- 2019.3 support
+    
 # 3.0 
  
 - 2019.2 support
