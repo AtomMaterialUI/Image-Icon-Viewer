@@ -1,5 +1,6 @@
 package com.mallowigi.imageicon.converters;
 
+import com.google.common.collect.Sets;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.paint.PaintUtil;
 import com.intellij.util.Base64;
@@ -24,6 +25,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Set;
 
 public final class RegularImageConverter implements ImageToIconConverter {
   private static final GraphicsConfiguration GRAPHICS_CFG =
@@ -32,24 +35,24 @@ public final class RegularImageConverter implements ImageToIconConverter {
     GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
   private final int WIDTH = 16;
   private final int HEIGHT = 16;
-  private final IconType iconType = IconType.IMG;
 
+  @SuppressWarnings("HardCodedStringLiteral")
   @NonNls
   @Override
-  public String[] getExtensions() {
-    return new String[]{
-      "*.jpeg",
-      "jpg",
-      "png",
-      "wbmp",
-      "gif",
-      "bmp"
-    };
+  public Set<String> getExtensions() {
+    return Collections.synchronizedSet(
+      Sets.newHashSet("jpeg",
+                      "jpg",
+                      "png",
+                      "wbmp",
+                      "gif",
+                      "bmp")
+    );
   }
 
   @Override
   public IconType getIconType() {
-    return iconType;
+    return IconType.IMG;
   }
 
   @Override
@@ -60,7 +63,7 @@ public final class RegularImageConverter implements ImageToIconConverter {
   @Override
   @Nullable
   public Icon convert(final VirtualFile canonicalFile, final String canonicalPath) {
-    final Icon imageIcon = loadFromJetBrains(canonicalFile);
+    final Icon imageIcon = loadImageIcon(canonicalFile);
     if (imageIcon != null) {
       return imageIcon;
     }
@@ -85,9 +88,11 @@ public final class RegularImageConverter implements ImageToIconConverter {
 
       if (image instanceof JBHiDPIScaledImage) {
         image = ((JBHiDPIScaledImage) image).getDelegate();
-      } else if (image instanceof ToolkitImage) {
+      }
+      else if (image instanceof ToolkitImage) {
         image = ((ToolkitImage) image).getBufferedImage();
-      } else if (!(image instanceof RenderableImage)) {
+      }
+      else if (!(image instanceof RenderableImage)) {
         final BufferedImage bufferedImage = UIUtil.createImage(
           GRAPHICS_CFG,
           image.getWidth(null),
@@ -99,7 +104,8 @@ public final class RegularImageConverter implements ImageToIconConverter {
       }
 
       ImageIO.write((RenderedImage) image, "png", outputStream);
-    } catch (final IOException e) {
+    }
+    catch (final IOException e) {
       e.printStackTrace();
     }
 
@@ -107,7 +113,7 @@ public final class RegularImageConverter implements ImageToIconConverter {
   }
 
   @Nullable
-  private Icon loadFromJetBrains(final VirtualFile virtualFile) {
+  private Icon loadImageIcon(final VirtualFile virtualFile) {
     try {
       final Image bytes = com.intellij.util.ImageLoader.loadFromBytes(virtualFile.contentsToByteArray());
       final Image image = ImageUtil.scaleImage(bytes, WIDTH, HEIGHT);
@@ -118,7 +124,8 @@ public final class RegularImageConverter implements ImageToIconConverter {
           return imageIcon;
         }
       }
-    } catch (final IOException e) {
+    }
+    catch (final IOException e) {
       e.printStackTrace();
     }
     return null;

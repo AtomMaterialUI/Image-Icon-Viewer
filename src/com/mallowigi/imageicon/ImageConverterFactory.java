@@ -1,6 +1,7 @@
 package com.mallowigi.imageicon;
 
 import com.google.common.collect.Sets;
+import com.mallowigi.imageicon.converters.ExtendedImageConverter;
 import com.mallowigi.imageicon.converters.ImageToIconConverter;
 import com.mallowigi.imageicon.converters.RegularImageConverter;
 import com.mallowigi.imageicon.converters.SVGImageConverter;
@@ -14,7 +15,8 @@ enum ImageConverterFactory {
   private static final Set<ImageToIconConverter> CONVERTERS = Collections.unmodifiableSet(
     Sets.newHashSet(
       new RegularImageConverter(),
-      new SVGImageConverter()
+      new SVGImageConverter(),
+      new ExtendedImageConverter()
     )
   );
 

@@ -1,5 +1,6 @@
 package com.mallowigi.imageicon.converters;
 
+import com.google.common.collect.Sets;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.Base64;
 import com.intellij.util.IconUtil;
@@ -13,15 +14,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Set;
 
 public final class SVGImageConverter implements ImageToIconConverter {
 
+  @SuppressWarnings("HardCodedStringLiteral")
   @NonNls
   @Override
-  public String[] getExtensions() {
-    return new String[]{
-      "svg"
-    };
+  public Set<String> getExtensions() {
+    return Collections.synchronizedSet(
+      Sets.newHashSet("svg")
+    );
   }
 
   @Override

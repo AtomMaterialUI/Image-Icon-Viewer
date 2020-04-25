@@ -38,6 +38,10 @@ plugins {
     id 'org.jetbrains.intellij' version '0.4.18'
 }
 
+dependencies {
+    implementation 'com.twelvemonkeys.imageio:imageio-core:3.5'
+}
+
 repositories {
     mavenCentral()
     maven { url 'https://dl.bintray.com/jetbrains/intellij-plugin-service' }
@@ -87,9 +91,4 @@ intellij {
         password System.getenv("publishPassword") ?: publishPassword
 //        channels = ['eap']
     }
-}
-
-
-dependencies {
-    implementation 'com.twelvemonkeys.imageio:imageio-core:3.5'
 }

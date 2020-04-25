@@ -61,7 +61,6 @@ public class ImageIconProvider extends IconProvider implements DumbAware {
     if (isValidImagePath(containingFile)) {
       final VirtualFile canonicalFile = Objects.requireNonNull(containingFile.getVirtualFile().getCanonicalFile());
       final String fileName = containingFile.getName();
-
       final ImageToIconConverter converter = ImageConverterFactory.create(fileName);
 
       if (converter != null) {

@@ -11,13 +11,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.Set;
 
 public interface ImageToIconConverter {
   /**
    * List of supported extensions
+   *
+   * @return
    */
-  String[] getExtensions();
+  Set<String> getExtensions();
 
   /**
    * Type of icon
@@ -90,6 +92,6 @@ public interface ImageToIconConverter {
    */
   default boolean isAccepted(final String fileName) {
     final String fileExt = FileUtilRt.getExtension(fileName);
-    return Arrays.stream(getExtensions()).anyMatch(fileExt::equalsIgnoreCase);
+    return getExtensions().stream().anyMatch(fileExt::equalsIgnoreCase);
   }
 }
