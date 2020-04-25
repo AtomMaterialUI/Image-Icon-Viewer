@@ -27,7 +27,7 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url 'http://dl.bintray.com/content/aalmiray/kordamp' }
+        maven { url 'https://dl.bintray.com/content/aalmiray/kordamp' }
     }
     dependencies {
         classpath 'org.kordamp:markdown-gradle-plugin:1.0.0'
@@ -40,7 +40,7 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
+    maven { url 'https://dl.bintray.com/jetbrains/intellij-plugin-service' }
 }
 
 apply plugin: 'org.kordamp.markdown.convert'

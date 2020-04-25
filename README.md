@@ -17,7 +17,7 @@ This is a JetBrains products' plugin to preview image files directly inside the 
 
 This is particularly helpful when working with a lot of icons.
 
-Supports images up to 64x64 pixels, with the following supported formats:
+Supports images with the following supported formats:
 
  - *.gif
  - *.png 
@@ -33,4 +33,5 @@ Plugin Icon made by [Vectors Market](https://www.flaticon.com/authors/vectors-ma
 
 ## Authors:
 - [David Sommer (dasoft.ch)](https://github.com/davidsommer)
+- [Jonathan Lermitage (jonathanlermitage)](https://github.com/jonathanlermitage)
 - [Elior Boukhobza (mallowigi)](https://github.com/mallowigi)
