@@ -1,23 +1,31 @@
 package com.mallowigi.imageicon.converters;
 
 import com.google.common.collect.Sets;
+import com.intellij.openapi.util.Ref;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.scale.ScaleContext;
 import com.intellij.util.Base64;
 import com.intellij.util.IconUtil;
 import com.intellij.util.SVGLoader;
 import com.mallowigi.imageicon.core.IconType;
 import com.mallowigi.imageicon.core.ImageWrapper;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collections;
 import java.util.Set;
 
 public final class SVGImageConverter implements ImageToIconConverter {
+  private final int WIDTH = 16;
+  private final int HEIGHT = 16;
 
   @SuppressWarnings("HardCodedStringLiteral")
   @NonNls
@@ -38,33 +46,19 @@ public final class SVGImageConverter implements ImageToIconConverter {
     return SVGLoader.load(byteArrayInputStream, 1.0f);
   }
 
-  @Nullable
+  @NotNull
   @Override
-  public Icon convert(final VirtualFile canonicalFile, final String canonicalPath) {
-    //    final Ref<URL> url = Ref.create();
-    //    try {
-    //      url.set(new File(canonicalFile.getPath()).toURI().toURL());
-    //    } catch (final MalformedURLException ex) {
-    //      ex.printStackTrace();
-    //    }
-
-    //    final BufferedImage image = SVGLoader.loadHiDPI(url.get(), new FileInputStream(canonicalPath), ScaleContext.create());
-    //    if (image != null && image.getWidth(null) <= MAX && image.getHeight(null) <= MAX) {
-    //      return IconUtil.toSize(
-    //        IconUtil.createImageIcon(image),
-    //        WIDTH,
-    //        HEIGHT);
-
-    // Convert image to base64
-    final ImageWrapper imageWrapper = getImageWrapper(canonicalFile);
-    if (imageWrapper == null) {
-      return null;
+  public Icon convert(final VirtualFile canonicalFile, final String canonicalPath) throws IOException {
+    final Ref<URL> url = Ref.create();
+    try {
+      url.set(new File(canonicalFile.getPath()).toURI().toURL());
     }
-    final ImageWrapper fromBase64 = fromBase64(toBase64(imageWrapper), getIconType());
-    if (fromBase64 == null) {
-      return null;
+    catch (final MalformedURLException ex) {
+      //
     }
-    return IconUtil.createImageIcon(fromBase64.getImage());
+    final Image bufferedImage = SVGLoader.loadHiDPI(url.get(), new FileInputStream(canonicalPath), ScaleContext.create());
+
+    return IconUtil.toSize(IconUtil.createImageIcon(bufferedImage), WIDTH, HEIGHT);
   }
 
   @Override
