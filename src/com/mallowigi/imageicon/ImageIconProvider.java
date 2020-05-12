@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 David Sommer and Elior Boukhobza
+ * Copyright (C) 2020 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,13 +20,12 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
- *
  */
 
 package com.mallowigi.imageicon;
 
 import com.intellij.ide.IconProvider;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
@@ -41,10 +40,11 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ImageIconProvider extends IconProvider implements DumbAware {
+  private static final Logger LOG = Logger.getInstance(ImageIconProvider.class);
 
   @SuppressWarnings({"OverlyComplexBooleanExpression",
-    "HardCodedStringLiteral",
-    "MethodWithMoreThanThreeNegations"})
+                      "HardCodedStringLiteral",
+                      "MethodWithMoreThanThreeNegations"})
   private static boolean isValidImagePath(final PsiFileSystemItem containingFile) {
     return containingFile != null &&
       containingFile.getVirtualFile() != null &&
@@ -66,7 +66,9 @@ public class ImageIconProvider extends IconProvider implements DumbAware {
       if (converter != null) {
         try {
           return converter.convert(canonicalFile, canonicalFile.getCanonicalPath());
-        } catch (final IOException ignored) {
+        }
+        catch (final IOException e) {
+          LOG.warn(e.getMessage());
         }
       }
     }

@@ -1,6 +1,31 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (C) 2020 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package com.mallowigi.imageicon.converters;
 
 import com.google.common.collect.Sets;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.paint.PaintUtil;
 import com.intellij.util.Base64;
@@ -33,8 +58,29 @@ public final class RegularImageConverter implements ImageToIconConverter {
     GraphicsEnvironment.isHeadless() ? null // some Gradle tasks run IDE in headless
                                      :
     GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
-  private final int WIDTH = 16;
-  private final int HEIGHT = 16;
+  private static final int WIDTH = 16;
+  private static final int HEIGHT = 16;
+
+  private static final Logger LOG = Logger.getInstance(RegularImageConverter.class);
+
+  @Nullable
+  private static Icon loadImageIcon(final VirtualFile virtualFile) {
+    try {
+      final Image bytes = com.intellij.util.ImageLoader.loadFromBytes(virtualFile.contentsToByteArray());
+      final Image image = ImageUtil.scaleImage(bytes, WIDTH, HEIGHT);
+
+      if (image != null) {
+        final JBImageIcon imageIcon = new JBImageIcon(image);
+        if (imageIcon.getImage() != null && imageIcon.getIconHeight() > 0 && imageIcon.getIconWidth() > 0) {
+          return imageIcon;
+        }
+      }
+    }
+    catch (final IOException e) {
+      LOG.warn(e.getMessage());
+    }
+    return null;
+  }
 
   @SuppressWarnings("HardCodedStringLiteral")
   @NonNls
@@ -106,29 +152,10 @@ public final class RegularImageConverter implements ImageToIconConverter {
       ImageIO.write((RenderedImage) image, "png", outputStream);
     }
     catch (final IOException e) {
-      e.printStackTrace();
+      LOG.warn(e.getMessage());
     }
 
     return Base64.encode(outputStream.toByteArray());
-  }
-
-  @Nullable
-  private Icon loadImageIcon(final VirtualFile virtualFile) {
-    try {
-      final Image bytes = com.intellij.util.ImageLoader.loadFromBytes(virtualFile.contentsToByteArray());
-      final Image image = ImageUtil.scaleImage(bytes, WIDTH, HEIGHT);
-
-      if (image != null) {
-        final JBImageIcon imageIcon = new JBImageIcon(image);
-        if (imageIcon.getImage() != null && imageIcon.getIconHeight() > 0 && imageIcon.getIconWidth() > 0) {
-          return imageIcon;
-        }
-      }
-    }
-    catch (final IOException e) {
-      e.printStackTrace();
-    }
-    return null;
   }
 
 }
