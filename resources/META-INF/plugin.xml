@@ -34,16 +34,6 @@
   <h2>Preview project images right inside the Project View or Tabs.</h2>
   <br/>
   <p>This is particularly helpful when working with icons, as it gives you a preview without needing to open the file.</p>
-  <p>Bigger images are scaled to 16x16, supported extensions are:
-  <br/>
-  <ul>
-  <li>*.gif</li>
-  <li>*.png</li>
-  <li>*.bmp</li>
-  <li>*.jpg</li>
-  <li>*.wbmp</li>
-  <li>*.svg</li>
-  </ul>
 ]]></description>
 
     <change-notes><![CDATA[]]></change-notes>

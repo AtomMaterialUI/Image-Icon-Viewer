@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 9.0
+- Fix SVG HiDPI and add Loggers
+
 # 8.0
 - Refactor the project to support more formats
 - Now supports images and icons for all sizes!
