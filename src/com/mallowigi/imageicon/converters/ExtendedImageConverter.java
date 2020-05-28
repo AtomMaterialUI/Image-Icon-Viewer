@@ -38,8 +38,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -106,7 +106,7 @@ public final class ExtendedImageConverter implements ImageToIconConverter, Dispo
   }
 
   @Override
-  public Image loadImage(final ByteArrayInputStream byteArrayInputStream) {
+  public Image loadImage(final ByteArrayInputStream byteArrayInputStream, final VirtualFile virtualFile) {
     return ImageLoader.loadFromStream(byteArrayInputStream);
   }
 

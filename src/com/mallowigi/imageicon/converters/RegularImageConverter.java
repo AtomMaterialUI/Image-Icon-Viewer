@@ -41,8 +41,11 @@ import org.jetbrains.annotations.Nullable;
 import sun.awt.image.ToolkitImage;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.awt.image.renderable.RenderableImage;
@@ -102,7 +105,7 @@ public final class RegularImageConverter implements ImageToIconConverter {
   }
 
   @Override
-  public Image loadImage(final ByteArrayInputStream byteArrayInputStream) {
+  public Image loadImage(final ByteArrayInputStream byteArrayInputStream, final VirtualFile virtualFile) {
     return ImageLoader.loadFromStream(byteArrayInputStream);
   }
 

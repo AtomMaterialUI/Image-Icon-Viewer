@@ -31,8 +31,8 @@ import com.mallowigi.imageicon.core.IconType;
 import com.mallowigi.imageicon.core.ImageWrapper;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.Icon;
+import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Set;
@@ -53,7 +53,7 @@ public interface ImageToIconConverter {
   /**
    * load an image from a byte stream
    */
-  Image loadImage(final ByteArrayInputStream byteArrayInputStream) throws IOException;
+  Image loadImage(final ByteArrayInputStream byteArrayInputStream, final VirtualFile virtualFile) throws IOException;
 
   /**
    * Convert a virtual file into an icon
@@ -81,7 +81,7 @@ public interface ImageToIconConverter {
       fileContents = virtualFile.contentsToByteArray();
       final ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(fileContents);
 
-      image = loadImage(byteArrayInputStream);
+      image = loadImage(byteArrayInputStream, virtualFile);
     }
     catch (final IOException ignored) {
       throw new IllegalArgumentException("IOException while trying to load image.");
@@ -97,13 +97,13 @@ public interface ImageToIconConverter {
    * Load an image as base64
    */
   @Nullable
-  default ImageWrapper fromBase64(final String base64, final IconType iconType) {
+  default ImageWrapper fromBase64(final String base64, final IconType iconType, final VirtualFile canonicalFile) {
     final byte[] decodedBase64 = Base64.decode(base64);
     final ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(decodedBase64);
     final Image image;
 
     try {
-      image = loadImage(byteArrayInputStream);
+      image = loadImage(byteArrayInputStream, canonicalFile);
     }
     catch (final IOException ex) {
       return null;
