@@ -21,33 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.mallowigi.imageicon
 
-package com.mallowigi.imageicon;
+import com.google.common.collect.Sets
+import com.mallowigi.imageicon.converters.ExtendedImageConverter
+import com.mallowigi.imageicon.converters.ImageToIconConverter
+import com.mallowigi.imageicon.converters.RegularImageConverter
+import com.mallowigi.imageicon.converters.SVGImageConverter
+import java.util.*
 
-import com.google.common.collect.Sets;
-import com.mallowigi.imageicon.converters.ExtendedImageConverter;
-import com.mallowigi.imageicon.converters.ImageToIconConverter;
-import com.mallowigi.imageicon.converters.RegularImageConverter;
-import com.mallowigi.imageicon.converters.SVGImageConverter;
-
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-
-enum ImageConverterFactory {
-  ;
-  private static final Set<ImageToIconConverter> CONVERTERS = Collections.unmodifiableSet(
-    Sets.newHashSet(
-      new RegularImageConverter(),
-      new SVGImageConverter(),
-      new ExtendedImageConverter()
+object ImageConverterFactory {
+    private val CONVERTERS = Collections.unmodifiableSet(
+        Sets.newHashSet(
+            RegularImageConverter(),
+            SVGImageConverter(),
+            ExtendedImageConverter()
+        )
     )
-  );
 
-  static ImageToIconConverter create(final String fileName) {
-    final Optional<ImageToIconConverter> first = CONVERTERS.stream()
-      .filter(converter -> converter.isAccepted(fileName))
-      .findFirst();
-    return first.orElse(null);
-  }
+    fun create(fileName: String?): ImageToIconConverter? {
+        val first = CONVERTERS.stream()
+            .filter { converter: ImageToIconConverter? -> converter!!.isAccepted(fileName) }
+            .findFirst()
+        return first.orElse(null)
+    }
 }

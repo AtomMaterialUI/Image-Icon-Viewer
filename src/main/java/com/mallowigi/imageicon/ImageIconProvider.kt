@@ -21,57 +21,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.mallowigi.imageicon
 
-package com.mallowigi.imageicon;
+import com.intellij.ide.IconProvider
+import com.intellij.openapi.diagnostic.Logger
+import com.intellij.openapi.project.DumbAware
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiFileSystemItem
+import java.io.IOException
+import java.util.*
+import javax.swing.Icon
 
-import com.intellij.ide.IconProvider;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiFileSystemItem;
-import com.mallowigi.imageicon.converters.ImageToIconConverter;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import java.io.IOException;
-import java.util.Objects;
-
-public class ImageIconProvider extends IconProvider implements DumbAware {
-  private static final Logger LOG = Logger.getInstance(ImageIconProvider.class);
-
-  @SuppressWarnings({"OverlyComplexBooleanExpression",
-                      "HardCodedStringLiteral",
-                      "MethodWithMoreThanThreeNegations"})
-  private static boolean isValidImagePath(final PsiFileSystemItem containingFile) {
-    return containingFile != null &&
-      containingFile.getVirtualFile() != null &&
-      containingFile.getVirtualFile().getCanonicalFile() != null &&
-      containingFile.getVirtualFile().getCanonicalFile().getCanonicalPath() != null &&
-      !containingFile.getVirtualFile().getCanonicalFile().getCanonicalPath().contains(".jar");
-  }
-
-  @Nullable
-  @Override
-  public final Icon getIcon(@NotNull final PsiElement element, final int flags) {
-    final PsiFile containingFile = element.getContainingFile();
-
-    if (isValidImagePath(containingFile)) {
-      final VirtualFile canonicalFile = Objects.requireNonNull(containingFile.getVirtualFile().getCanonicalFile());
-      final String fileName = containingFile.getName();
-      final ImageToIconConverter converter = ImageConverterFactory.create(fileName);
-
-      if (converter != null) {
-        try {
-          return converter.convert(canonicalFile, canonicalFile.getCanonicalPath());
+class ImageIconProvider : IconProvider(), DumbAware {
+    override fun getIcon(element: PsiElement, flags: Int): Icon? {
+        val containingFile = element.containingFile
+        if (isValidImagePath(containingFile)) {
+            val canonicalFile = Objects.requireNonNull(containingFile.virtualFile.canonicalFile)!!
+            val fileName = containingFile.name
+            val converter = ImageConverterFactory.create(fileName)
+            if (converter != null) {
+                try {
+                    return converter.convert(canonicalFile, canonicalFile.canonicalPath)
+                } catch (e: IOException) {
+                    LOG.warn(e.message)
+                }
+            }
         }
-        catch (final IOException e) {
-          LOG.warn(e.getMessage());
-        }
-      }
+        return null
     }
-    return null;
-  }
+
+    companion object {
+        private val LOG = Logger.getInstance(ImageIconProvider::class.java)
+        private fun isValidImagePath(containingFile: PsiFileSystemItem?): Boolean {
+            return containingFile != null &&
+                containingFile.virtualFile != null &&
+                containingFile.virtualFile.canonicalFile != null &&
+                containingFile.virtualFile.canonicalFile!!.canonicalPath != null &&
+                !containingFile.virtualFile.canonicalFile!!.canonicalPath!!.contains(".jar")
+        }
+    }
 }

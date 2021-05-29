@@ -21,11 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.mallowigi.imageicon.core
 
-package com.mallowigi.imageicon.core;
-
-public enum IconType {
-  SVG,
-  EXTENDED,
-  IMG
+enum class IconType {
+    SVG, EXTENDED, IMG
 }
