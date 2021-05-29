@@ -2,14 +2,10 @@
 
 <h1 align="center">
   <br>
-    <img src="https://raw.githubusercontent.com/mallowigi/Image-Icon-Viewer/master/src/main/resources/META-INF/pluginIcon.svg?sanitize=true" alt="logo" width="200">
-  <br><br>
-  Image Icon Viewer
+    <img src="src/main/resources/META-INF/pluginIcon.svg" alt="logo" width="320" height="320">
   <br>
   <br>
 </h1>
-
-![pluginIcon.svg](src/main/resources/META-INF/pluginIcon.svg)
 
 **Preview images and icons directly from the Project View.**
 
@@ -18,7 +14,7 @@
 Supports the following formats:
 
  - *.gif
- - *.png 
+ - *.png
  - *.bmp
  - *.jpg
  - *.wbmp
@@ -43,7 +39,7 @@ Supports the following formats:
  - *.wbmp
  - *.xbm
  - *.xpm
- 
+
 ## Screenshots
 
 ![light.png](img/light.png) ![darcula.png](img/darcula.png)
