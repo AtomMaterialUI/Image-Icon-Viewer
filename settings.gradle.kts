@@ -22,5 +22,5 @@
  * SOFTWARE.
  */
 
-rootProject.name = 'Image Icon Viewer'
+rootProject.name = "Image Icon Viewer"
 
