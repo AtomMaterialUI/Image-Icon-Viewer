@@ -32,14 +32,13 @@ plugins {
     // Kotlin support
     id("org.jetbrains.kotlin.jvm") version "1.5.0-M2"
     // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-    id("org.jetbrains.intellij") version "1.0"
+    id("org.jetbrains.intellij") version "0.7.3"
     // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
     id("org.jetbrains.changelog") version "1.1.2"
     // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
     id("io.gitlab.arturbosch.detekt") version "1.16.0"
     // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
     id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
-    id("idea")
 }
 
 group = properties("pluginGroup")
@@ -49,6 +48,7 @@ val depsTwelveMonkeys = properties("depsTwelveMonkeys")
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    jcenter()
     maven(url = "https://dl.bintray.com/jetbrains/intellij-plugin-service")
     maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
     maven(url = "https://www.jetbrains.com/intellij-repository/releases")
@@ -73,17 +73,15 @@ dependencies {
 // Configure gradle-intellij-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-    pluginName.set(properties("pluginName"))
-    version.set(properties("platformVersion"))
-    type.set(properties("platformType"))
-    downloadSources.set(true)
-    instrumentCode.set(true)
-    updateSinceUntilBuild.set(true)
+    pluginName = properties("pluginName")
+    version = properties("platformVersion")
+    type = properties("platformType")
+    downloadSources = true
+    instrumentCode = true
+    updateSinceUntilBuild = true
 //  localPath.set(properties("idePath"))
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-    plugins.set(listOf(
-    ))
 }
 
 // Configure gradle-changelog-plugin plugin.
@@ -131,9 +129,9 @@ tasks {
     }
 
     patchPluginXml {
-        version.set(properties("pluginVersion"))
-        sinceBuild.set(properties("pluginSinceBuild"))
-        untilBuild.set(properties("pluginUntilBuild"))
+        version(properties("pluginVersion"))
+        sinceBuild(properties("pluginSinceBuild"))
+        untilBuild(properties("pluginUntilBuild"))
 
         // Get the latest available change notes from the changelog file
 //    changeNotes(
@@ -148,7 +146,7 @@ tasks {
     }
 
     runPluginVerifier {
-        ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
+        ideVersions(properties("pluginVerifierIdeVersions"))
     }
 
     buildSearchableOptions {
@@ -157,6 +155,6 @@ tasks {
 
     publishPlugin {
 //    dependsOn("patchChangelog")
-        token.set(file("./publishToken").readText())
+        token(file("./publishToken").readText())
     }
 }
