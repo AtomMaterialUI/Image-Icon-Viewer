@@ -86,7 +86,8 @@ class RegularImageConverter : ImageToIconConverter {
                         image.getWidth(null).toDouble(),
                         image.getHeight(null).toDouble(),
                         BufferedImage.TYPE_INT_RGB,
-                        PaintUtil.RoundingMode.ROUND)
+                        PaintUtil.RoundingMode.ROUND
+                    )
                     bufferedImage.graphics.drawImage(image, 0, 0, null)
                     image = bufferedImage
                 }

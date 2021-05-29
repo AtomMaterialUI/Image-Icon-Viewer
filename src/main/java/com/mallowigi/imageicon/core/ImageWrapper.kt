@@ -49,5 +49,4 @@ class ImageWrapper(val iconType: IconType, image: Image, val imageBytes: ByteArr
         val scaledImage = ImageLoader.scaleImage(image, (widthToScaleTo / width).toDouble())
         return if (retina) RetinaImage.createFrom(scaledImage) else scaledImage
     }
-
 }

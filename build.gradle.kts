@@ -86,13 +86,13 @@ intellij {
 
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
-//changelog {
+// changelog {
 //  path = "${project.projectDir}/docs/CHANGELOG.md"
 //  version = properties("pluginVersion")
 //  keepUnreleasedSection = true
 //  unreleasedTerm = "Changelog"
 //  groups = emptyList()
-//}
+// }
 
 // Configure detekt plugin.
 // Read more: https://detekt.github.io/detekt/kotlindsl.html

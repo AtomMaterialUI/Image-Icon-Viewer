@@ -11,12 +11,12 @@ formatting:
     Indentation:
         active: true
         autoCorrect: true
-        indentSize: 2
-        continuationIndentSize: 2
+        indentSize: 4
+        continuationIndentSize: 4
     ParameterListWrapping:
         active: true
         autoCorrect: true
-        indentSize: 2
+        indentSize: 4
 
 performance:
     SpreadOperator:

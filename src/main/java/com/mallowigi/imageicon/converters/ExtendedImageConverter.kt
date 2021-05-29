@@ -97,7 +97,8 @@ class ExtendedImageConverter : ImageToIconConverter, Disposable {
     override fun dispose() = CONTEXT_UPDATED.remove()
 
     companion object {
-        private val EXTENSIONS: MutableSet<String> = mutableSetOf("bigtiff",
+        private val EXTENSIONS: MutableSet<String> = mutableSetOf(
+            "bigtiff",
             "dcx",
             "icns",
             "ico",
@@ -115,7 +116,8 @@ class ExtendedImageConverter : ImageToIconConverter, Disposable {
             "tiff",
             "wbmp",
             "xbm",
-            "xpm")
+            "xpm"
+        )
 
         /**
          * Thread that we use to preload TwelveMonkeys extensions

@@ -23,4 +23,3 @@
  */
 
 rootProject.name = "Image Icon Viewer"
-
