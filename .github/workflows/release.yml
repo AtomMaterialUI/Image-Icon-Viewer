@@ -12,7 +12,7 @@ jobs:
                 with:
                     java-version: 11
                     distribution: 'zulu'
-            -   run: ./ciScripts/buildPlugin.sh
+            -   run: ./ci/buildPlugin.sh
             -   name: Copy zip file
                 run: cp build/distributions/*.zip image-icon-viewer.zip
             -   uses: actions/upload-release-asset@v1.0.2
