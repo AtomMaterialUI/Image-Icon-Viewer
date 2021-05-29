@@ -9,7 +9,7 @@
   <br>
 </h1>
 
-![pluginIcon.svg](resources/META-INF/pluginIcon.svg)
+![pluginIcon.svg](src/main/resources/META-INF/pluginIcon.svg)
 
 **Preview images and icons directly from the Project View.**
 
