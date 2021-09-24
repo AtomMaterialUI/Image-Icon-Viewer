@@ -46,4 +46,8 @@
         <iconProvider implementation="com.mallowigi.imageicon.ImageIconProvider"/>
     </extensions>
 
+    <change-notes>
+        Change notes will be available as part of Changelog.html
+    </change-notes>
+
 </idea-plugin>

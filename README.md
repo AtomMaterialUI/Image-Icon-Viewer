@@ -1,11 +1,13 @@
 # Image Icon Viewer
 
+<!-- markdownlint-disable MD033 -->
 <h1 align="center">
   <br>
     <img src="src/main/resources/META-INF/pluginIcon.svg" alt="logo" width="320" height="320">
   <br>
   <br>
 </h1>
+<!-- markdownlint-enable MD033 -->
 
 **Preview images and icons directly from the Project View.**
 
@@ -13,32 +15,32 @@
 
 Supports the following formats:
 
- - *.gif
- - *.png
- - *.bmp
- - *.jpg
- - *.wbmp
- - *.svg
- - *.tiff
- - *.bigtiff
- - *.dcx
- - *.icns
- - *.ico
- - *.jbig2
- - *.pam
- - *.pbm
- - *.pcx
- - *.pgm
- - *.pnm
- - *.ppm
- - *.psd
- - *.rgbe
- - *.tga
- - *.tif
- - *.tiff
- - *.wbmp
- - *.xbm
- - *.xpm
+- *.gif
+- *.png
+- *.bmp
+- *.jpg
+- *.wbmp
+- *.svg
+- *.tiff
+- *.bigtiff
+- *.dcx
+- *.icns
+- *.ico
+- *.jbig2
+- *.pam
+- *.pbm
+- *.pcx
+- *.pgm
+- *.pnm
+- *.ppm
+- *.psd
+- *.rgbe
+- *.tga
+- *.tif
+- *.tiff
+- *.wbmp
+- *.xbm
+- *.xpm
 
 ## Screenshots
 
@@ -46,13 +48,16 @@ Supports the following formats:
 
 ![example.png](img/example.png)
 
-
 ## Acknowledgements
-Original plugin at https://github.com/davidsommer/IconViewer
 
-Plugin Icon made by [Vectors Market](https://www.flaticon.com/authors/vectors-market) from [Flaticon](http://www.flaticon.com), licensed by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+Original plugin at <https://github.com/davidsommer/IconViewer>
 
-## Authors:
+Plugin Icon made by [Vectors Market](https://www.flaticon.com/authors/vectors-market)
+from [Flaticon](http://www.flaticon.com), licensed
+by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+
+## Authors
+
 - [David Sommer (dasoft.ch)](https://github.com/davidsommer)
 - [Jonathan Lermitage (jonathanlermitage)](https://github.com/jonathanlermitage)
 - [Elior Boukhobza (mallowigi)](https://github.com/mallowigi)

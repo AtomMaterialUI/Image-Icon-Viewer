@@ -12,6 +12,7 @@ assignees: ''
 
 **To Reproduce**
 <!-- Steps to reproduce the behavior -->
+
 1.
 
 **Expected Behavior**
@@ -26,7 +27,6 @@ It should contain:
 * IntelliJ Product + version (IDEA, RubyMine...)
 * Plugin version
 * If needed a list of enabled plugins -->
-
 
 **Screenshots**
 <!-- If applicable, add screenshots to help explain your problem. -->

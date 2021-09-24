@@ -79,7 +79,8 @@ interface ImageToIconConverter {
             val byteArrayInputStream = ByteArrayInputStream(fileContents)
             image = loadImage(byteArrayInputStream, virtualFile)
         } catch (ignored: IOException) {
-            throw IllegalArgumentException("IOException while trying to load image.")
+            // do nothing
+            return null;
         }
         requireNotNull(image) { "Could not load image properly." }
         return ImageWrapper(iconType!!, image, fileContents)

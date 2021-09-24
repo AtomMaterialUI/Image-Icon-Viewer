@@ -26,19 +26,22 @@
 
 fun properties(key: String) = project.findProperty(key).toString()
 
+fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
+
+
 plugins {
     // Java support
     id("java")
     // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.5.10"
+    id("org.jetbrains.kotlin.jvm") version "1.5.31"
     // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-    id("org.jetbrains.intellij") version "0.7.3"
+    id("org.jetbrains.intellij") version "1.1.3"
     // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
-    id("org.jetbrains.changelog") version "1.1.2"
+    id("org.jetbrains.changelog") version "1.3.0"
     // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
-    id("io.gitlab.arturbosch.detekt") version "1.16.0"
+    id("io.gitlab.arturbosch.detekt") version "1.18.1"
     // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
-    id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
 }
 
 group = properties("pluginGroup")
@@ -48,7 +51,6 @@ val depsTwelveMonkeys = properties("depsTwelveMonkeys")
 // Configure project's dependencies
 repositories {
     mavenCentral()
-    jcenter()
     maven(url = "https://dl.bintray.com/jetbrains/intellij-plugin-service")
     maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
     maven(url = "https://www.jetbrains.com/intellij-repository/releases")
@@ -56,7 +58,7 @@ repositories {
 }
 
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.18.1")
     implementation("com.twelvemonkeys.imageio:imageio-core:$depsTwelveMonkeys")
     implementation("com.twelvemonkeys.imageio:imageio-metadata:$depsTwelveMonkeys")
     implementation("com.twelvemonkeys.imageio:imageio-sgi:$depsTwelveMonkeys")
@@ -73,36 +75,45 @@ dependencies {
 // Configure gradle-intellij-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-    pluginName = properties("pluginName")
-    version = properties("platformVersion")
-    type = properties("platformType")
-    downloadSources = true
-    instrumentCode = true
-    updateSinceUntilBuild = true
+    pluginName.set(properties("pluginName"))
+    version.set(properties("platformVersion"))
+    type.set(properties("platformType"))
+    downloadSources.set(true)
+    instrumentCode.set(true)
+    updateSinceUntilBuild.set(true)
 //  localPath.set(properties("idePath"))
 
     // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
+//    plugins.set(
+//        listOf(
+//            "java",
+//            "com.intellij.CloudConfig",
+//            "Git4Idea",
+//        )
+//    )
 }
 
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
-// changelog {
-//  path = "${project.projectDir}/docs/CHANGELOG.md"
-//  version = properties("pluginVersion")
-//  keepUnreleasedSection = true
-//  unreleasedTerm = "Changelog"
-//  groups = emptyList()
-// }
+changelog {
+    path.set("${project.projectDir}/docs/CHANGELOG.md")
+    version.set(properties("pluginVersion"))
+    header.set(provider { version.get() })
+    itemPrefix.set("-")
+    keepUnreleasedSection.set(true)
+    unreleasedTerm.set("[Unreleased]")
+    groups.set(listOf("Features", "Fixes", "Other", "Bump"))
+}
+
 
 // Configure detekt plugin.
 // Read more: https://detekt.github.io/detekt/kotlindsl.html
 detekt {
     config = files("./detekt-config.yml")
     buildUponDefaultConfig = true
-    autoCorrect = true
 
     reports {
-        html.enabled = true
+        html.enabled = false
         xml.enabled = false
         txt.enabled = false
     }
@@ -116,6 +127,7 @@ tasks {
     }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions.jvmTarget = "1.8"
+        kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=enable")
     }
 
     withType<io.gitlab.arturbosch.detekt.Detekt> {
@@ -130,24 +142,18 @@ tasks {
     }
 
     patchPluginXml {
-        version(properties("pluginVersion"))
-        sinceBuild(properties("pluginSinceBuild"))
-        untilBuild(properties("pluginUntilBuild"))
+        version.set(properties("pluginVersion"))
+        sinceBuild.set(properties("pluginSinceBuild"))
+        untilBuild.set(properties("pluginUntilBuild"))
 
         // Get the latest available change notes from the changelog file
-//    changeNotes(
-//        closure {
-//          File(projectDir, "docs/CHANGELOG.md")
-//              .readText()
-//              .lines()
-//              .joinToString("\n")
-//              .run { markdownToHTML(this) }
-//        }
-//    )
+        changeNotes.set(
+            changelog.getLatest().toHTML()
+        )
     }
 
     runPluginVerifier {
-        ideVersions(properties("pluginVerifierIdeVersions"))
+        ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
     }
 
     buildSearchableOptions {
@@ -156,6 +162,6 @@ tasks {
 
     publishPlugin {
 //    dependsOn("patchChangelog")
-        token(file("./publishToken").readText())
+        token.set(file("./publishToken").readText())
     }
 }
