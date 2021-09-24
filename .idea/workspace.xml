@@ -22,9 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="chore: remove sonarlint from vcs">
+    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="chore(renovate): configure for java/kotlin">
+      <change afterPath="$PROJECT_DIR$/.github/dependabot.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/renovate.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/settings.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/stale.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/quality-checks.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renovate.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +121,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.github" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -124,19 +130,21 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Preview.Settings.Editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.github" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/com/mallowigi/imageicon" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.github" />
       <recent name="$PROJECT_DIR$/src/main" />
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [runIde]">
+  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [buildPlugin]">
     <configuration name="Image-Icon-Viewer [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -253,10 +261,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
-        <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
-        <item itemvalue="Gradle.Image-Icon-Viewer [runPluginVerifier]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
+        <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
+        <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
+        <item itemvalue="Gradle.Image-Icon-Viewer [runPluginVerifier]" />
       </list>
     </recent_temporary>
   </component>
@@ -285,7 +293,8 @@
       <workItem from="1617607220183" duration="819000" />
       <workItem from="1617650066171" duration="874000" />
       <workItem from="1632486986985" duration="2643000" />
-      <workItem from="1632490014550" duration="7932000" />
+      <workItem from="1632490014550" duration="8272000" />
+      <workItem from="1632498473642" duration="784000" />
     </task>
     <task id="LOCAL-00001" summary="chore(project): upgrade deps, fix changelog, add linters">
       <created>1632492159492</created>
@@ -308,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632497593988</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="chore: bump version + changelgo">
+      <created>1632498042013</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1632498042014</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +361,9 @@
     <MESSAGE value="chore(project): upgrade deps, fix changelog, add linters" />
     <MESSAGE value="feat: fix svg rendering for icons &gt;= 16px, and add scaling support" />
     <MESSAGE value="chore: remove sonarlint from vcs" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: remove sonarlint from vcs" />
+    <MESSAGE value="chore: bump version + changelgo" />
+    <MESSAGE value="chore(renovate): configure for java/kotlin" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(renovate): configure for java/kotlin" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
