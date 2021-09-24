@@ -22,13 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="chore(project): upgrade deps, fix changelog, add linters">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="chore: remove sonarlint from vcs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ImageToIconConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ImageToIconConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/SVGImageConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/SVGImageConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/CHANGELOG.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +102,8 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -126,7 +124,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="Preview.Settings.Editor" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -287,7 +285,7 @@
       <workItem from="1617607220183" duration="819000" />
       <workItem from="1617650066171" duration="874000" />
       <workItem from="1632486986985" duration="2643000" />
-      <workItem from="1632490014550" duration="7466000" />
+      <workItem from="1632490014550" duration="7932000" />
     </task>
     <task id="LOCAL-00001" summary="chore(project): upgrade deps, fix changelog, add linters">
       <created>1632492159492</created>
@@ -296,7 +294,21 @@
       <option name="project" value="LOCAL" />
       <updated>1632492159492</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: fix svg rendering for icons &gt;= 16px, and add scaling support">
+      <created>1632497564887</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1632497564887</updated>
+    </task>
+    <task id="LOCAL-00003" summary="chore: remove sonarlint from vcs">
+      <created>1632497593988</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1632497593988</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +343,9 @@
     <MESSAGE value="wat" />
     <MESSAGE value="add idea to vcs" />
     <MESSAGE value="chore(project): upgrade deps, fix changelog, add linters" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(project): upgrade deps, fix changelog, add linters" />
+    <MESSAGE value="feat: fix svg rendering for icons &gt;= 16px, and add scaling support" />
+    <MESSAGE value="chore: remove sonarlint from vcs" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: remove sonarlint from vcs" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

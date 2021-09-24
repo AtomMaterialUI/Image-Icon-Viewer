@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## 10.0.0
+
+### Fixes
+
+- Fix SVG files not being resized correctly when width > 16
+- Add support for current user scale for SVG Files
+
 ## 9.0.0
 
 ### Fixes
@@ -15,12 +22,12 @@
 - Refactor the project to support more formats
 - Now supports images and icons for all sizes!
 - Supports now more formats:
-    - PSD
-    - TIFF
-    - PCX
-    - TGA
-    - ICNS
-    - ICO & CUR
+  - PSD
+  - TIFF
+  - PCX
+  - TGA
+  - ICNS
+  - ICO & CUR
 
 ## 7.0.0
 
