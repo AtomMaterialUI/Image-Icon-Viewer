@@ -23,48 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="chore(project): upgrade deps, fix changelog, add linters">
-      <change afterPath="$PROJECT_DIR$/.markdownlint.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.markdownlintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.yamllint.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commitlint.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/renovate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/bug_report.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/PULL_REQUEST_TEMPLATE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copyright/ImageIcon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copyright/ImageIcon.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries-with-intellij-classes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries-with-intellij-classes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator-enh.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/markdown-navigator-enh.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/markdown-navigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/saveactions_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a45a911a8f1836b0b6c5b758962572012d8f8c3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5bbfa66edb4db3c7c33c5181f43510990d3307f9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f07866736216be0ee2aba49e392191aeae700a35" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ci/buildPlugin.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/CHANGELOG.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/CHANGELOG.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ImageToIconConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ImageToIconConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/SVGImageConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/SVGImageConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,8 +287,16 @@
       <workItem from="1617607220183" duration="819000" />
       <workItem from="1617650066171" duration="874000" />
       <workItem from="1632486986985" duration="2643000" />
-      <workItem from="1632490014550" duration="2057000" />
+      <workItem from="1632490014550" duration="7466000" />
     </task>
+    <task id="LOCAL-00001" summary="chore(project): upgrade deps, fix changelog, add linters">
+      <created>1632492159492</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1632492159492</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

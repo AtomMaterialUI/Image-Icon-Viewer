@@ -50,6 +50,7 @@ class SVGImageConverter : ImageToIconConverter {
     override val iconType: IconType
         get() = IconType.SVG
 
+    @Suppress("UnstableApiUsage")
     @Throws(IOException::class)
     override fun loadImage(byteArrayInputStream: ByteArrayInputStream?, virtualFile: VirtualFile?): Image? {
         val url = Ref.create<URL>()
@@ -64,7 +65,7 @@ class SVGImageConverter : ImageToIconConverter {
     @Throws(IOException::class)
     override fun convert(canonicalFile: VirtualFile?, canonicalPath: String?): Icon? {
         val imageWrapper = getImageWrapper(canonicalFile!!) ?: return null
-        val fromBase64 = fromBase64(toBase64(imageWrapper), iconType, canonicalFile) ?: return null
+        val fromBase64 = fromBase64(toBase64(imageWrapper), iconType, canonicalFile, true) ?: return null
         return IconUtil.createImageIcon(fromBase64.image)
     }
 

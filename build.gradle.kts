@@ -134,6 +134,10 @@ tasks {
         jvmTarget = "1.8"
     }
 
+    withType<Copy> {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    }
+
     sourceSets {
         main {
             java.srcDirs("src/main/java")
@@ -163,5 +167,9 @@ tasks {
     publishPlugin {
 //    dependsOn("patchChangelog")
         token.set(file("./publishToken").readText())
+    }
+
+    runIde {
+        ideDir.set(fileProperties("idePath"))
     }
 }

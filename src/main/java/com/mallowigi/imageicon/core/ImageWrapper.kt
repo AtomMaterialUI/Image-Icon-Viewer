@@ -23,30 +23,46 @@
  */
 package com.mallowigi.imageicon.core
 
+import com.intellij.ui.scale.JBUIScale
 import com.intellij.util.ImageLoader
 import com.intellij.util.RetinaImage
 import java.awt.Image
 
-class ImageWrapper(val iconType: IconType, image: Image, val imageBytes: ByteArray) {
+class ImageWrapper(val iconType: IconType, image: Image, val imageBytes: ByteArray, val isSvg: Boolean = false) {
     val image: Image = scaleImage(image)
 
     private fun scaleImage(image: Image): Image {
+        if (isSvg) return scaleSvg(image)
+
         val width = image.getWidth(null)
         val height = image.getHeight(null)
+
         require(width == height) { "Image should be square." }
         require(width > 0) { "Width and height are unknown." }
 
-        if (width == 16) return image
-        if (width == 32) return RetinaImage.createFrom(image)
+        if (width == SIZE) return image
+        if (width == RETINA) return RetinaImage.createFrom(image)
 
-        var widthToScaleTo = 16.0f
+        var widthToScaleTo = JBUIScale.scale(16.0f)
         var retina = false
 
-        if (width >= 32) {
-            widthToScaleTo = 32.0f
+        if (width >= RETINA) {
+            widthToScaleTo = JBUIScale.scale(32.0f)
             retina = true
         }
         val scaledImage = ImageLoader.scaleImage(image, (widthToScaleTo / width).toDouble())
         return if (retina) RetinaImage.createFrom(scaledImage) else scaledImage
+    }
+
+    private fun scaleSvg(image: Image): Image {
+        val width = image.getWidth(null)
+        if (width == SIZE) return image
+
+        return ImageLoader.scaleImage(image, SIZE, SIZE)
+    }
+
+    companion object {
+        val SIZE = JBUIScale.scale(16)
+        val RETINA = JBUIScale.scale(32)
     }
 }

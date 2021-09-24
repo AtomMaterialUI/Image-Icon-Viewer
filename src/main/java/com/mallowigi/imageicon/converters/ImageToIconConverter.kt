@@ -89,7 +89,7 @@ interface ImageToIconConverter {
     /**
      * Load an image as base64
      */
-    fun fromBase64(base64: String?, iconType: IconType?, canonicalFile: VirtualFile?): ImageWrapper? {
+    fun fromBase64(base64: String?, iconType: IconType?, canonicalFile: VirtualFile?, isSvg: Boolean = true): ImageWrapper? {
         val decodedBase64 = Base64.decode(base64)
         val byteArrayInputStream = ByteArrayInputStream(decodedBase64)
         val image: Image? = try {
@@ -97,7 +97,7 @@ interface ImageToIconConverter {
         } catch (ex: IOException) {
             return null
         }
-        return ImageWrapper(iconType!!, image!!, decodedBase64)
+        return ImageWrapper(iconType!!, image!!, decodedBase64, isSvg)
     }
 
     /**
