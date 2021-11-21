@@ -22,15 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="chore(renovate): configure for java/kotlin">
-      <change afterPath="$PROJECT_DIR$/.github/dependabot.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/renovate.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/settings.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/stale.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/quality-checks.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="chore(github): update renovate and deps">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/renovate.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.pre-commit-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.pre-commit-config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renovate.json" beforeDir="false" afterPath="$PROJECT_DIR$/renovate.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +56,11 @@
     <system id="GRADLE">
       <state>
         <task path="$PROJECT_DIR$">
-          <activation />
+          <activation>
+            <after_sync>
+              <task name="setupDependencies" />
+            </after_sync>
+          </activation>
         </task>
         <projects_view>
           <tree_state>
@@ -97,6 +100,9 @@
     <option name="context" value="arn:aws:eks:us-east-1:884661243007:cluster/prod" />
     <option name="namespace" value="default" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="2" />
   </component>
@@ -129,8 +135,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JSON" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -144,7 +153,7 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [buildPlugin]">
+  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [runIde]">
     <configuration name="Image-Icon-Viewer [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -261,8 +270,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
+        <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [runPluginVerifier]" />
       </list>
@@ -294,7 +303,9 @@
       <workItem from="1617650066171" duration="874000" />
       <workItem from="1632486986985" duration="2643000" />
       <workItem from="1632490014550" duration="8272000" />
-      <workItem from="1632498473642" duration="784000" />
+      <workItem from="1632498473642" duration="2186000" />
+      <workItem from="1632500862527" duration="913000" />
+      <workItem from="1632846725973" duration="735000" />
     </task>
     <task id="LOCAL-00001" summary="chore(project): upgrade deps, fix changelog, add linters">
       <created>1632492159492</created>
@@ -324,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632498042014</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="chore(github): add renovate, dependabot, stale etc">
+      <created>1632499290396</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1632499290396</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,7 +381,10 @@
     <MESSAGE value="chore: remove sonarlint from vcs" />
     <MESSAGE value="chore: bump version + changelgo" />
     <MESSAGE value="chore(renovate): configure for java/kotlin" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(renovate): configure for java/kotlin" />
+    <MESSAGE value="chore(github): add renovate, dependabot, stale etc" />
+    <MESSAGE value="chore(github): update renovate" />
+    <MESSAGE value="chore(github): update renovate and deps" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(github): update renovate and deps" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
