@@ -58,7 +58,7 @@ repositories {
 }
 
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
     implementation("com.twelvemonkeys.imageio:imageio-core:$depsTwelveMonkeys")
     implementation("com.twelvemonkeys.imageio:imageio-metadata:$depsTwelveMonkeys")
     implementation("com.twelvemonkeys.imageio:imageio-sgi:$depsTwelveMonkeys")
