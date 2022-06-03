@@ -24,24 +24,27 @@
  *
  */
 
+import io.gitlab.arturbosch.detekt.Detekt
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 fun properties(key: String) = project.findProperty(key).toString()
 
 fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
 
 
 plugins {
-    // Java support
-    id("java")
-    // Kotlin support
-    id("org.jetbrains.kotlin.jvm") version "1.6.0"
-    // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-    id("org.jetbrains.intellij") version "1.3.0"
-    // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
-    id("org.jetbrains.changelog") version "1.3.1"
-    // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
-    id("io.gitlab.arturbosch.detekt") version "1.19.0"
-    // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
+  // Java support
+  id("java")
+  // Kotlin support
+  id("org.jetbrains.kotlin.jvm") version "1.6.20"
+  // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
+  id("org.jetbrains.intellij") version "1.6.0"
+  // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
+  id("org.jetbrains.changelog") version "1.3.1"
+  // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
+  id("io.gitlab.arturbosch.detekt") version "1.20.0"
+  // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
+  id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
 group = properties("pluginGroup")
@@ -50,40 +53,46 @@ val depsTwelveMonkeys = properties("depsTwelveMonkeys")
 
 // Configure project's dependencies
 repositories {
-    mavenCentral()
-    maven(url = "https://dl.bintray.com/jetbrains/intellij-plugin-service")
-    maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
-    maven(url = "https://www.jetbrains.com/intellij-repository/releases")
-    maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
+  mavenCentral()
+  maven(url = "https://dl.bintray.com/jetbrains/intellij-plugin-service")
+  maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
+  maven(url = "https://www.jetbrains.com/intellij-repository/releases")
+  maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
+}
+
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(17))
+  }
 }
 
 dependencies {
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
-    implementation("com.twelvemonkeys.imageio:imageio-core:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-metadata:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-sgi:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-psd:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-tiff:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-pdf:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-icns:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-pcx:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-pnm:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-tga:$depsTwelveMonkeys")
-    implementation("com.twelvemonkeys.imageio:imageio-bmp:$depsTwelveMonkeys")
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
+  implementation("com.twelvemonkeys.imageio:imageio-core:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-metadata:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-sgi:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-psd:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-tiff:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-pdf:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-icns:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-pcx:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-pnm:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-tga:$depsTwelveMonkeys")
+  implementation("com.twelvemonkeys.imageio:imageio-bmp:$depsTwelveMonkeys")
 }
 
 // Configure gradle-intellij-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-    pluginName.set(properties("pluginName"))
-    version.set(properties("platformVersion"))
-    type.set(properties("platformType"))
-    downloadSources.set(true)
-    instrumentCode.set(true)
-    updateSinceUntilBuild.set(true)
+  pluginName.set(properties("pluginName"))
+  version.set(properties("platformVersion"))
+  type.set(properties("platformType"))
+  downloadSources.set(true)
+  instrumentCode.set(true)
+  updateSinceUntilBuild.set(true)
 //  localPath.set(properties("idePath"))
 
-    // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
+  // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
 //    plugins.set(
 //        listOf(
 //            "java",
@@ -96,80 +105,88 @@ intellij {
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
-    path.set("${project.projectDir}/docs/CHANGELOG.md")
-    version.set(properties("pluginVersion"))
-    header.set(provider { version.get() })
-    itemPrefix.set("-")
-    keepUnreleasedSection.set(true)
-    unreleasedTerm.set("[Unreleased]")
-    groups.set(listOf("Features", "Fixes", "Other", "Bump"))
+  path.set("${project.projectDir}/docs/CHANGELOG.md")
+  version.set(properties("pluginVersion"))
+  header.set(provider { version.get() })
+  itemPrefix.set("-")
+  keepUnreleasedSection.set(true)
+  unreleasedTerm.set("[Unreleased]")
+  groups.set(listOf("Features", "Fixes", "Other", "Bump"))
 }
-
 
 // Configure detekt plugin.
 // Read more: https://detekt.github.io/detekt/kotlindsl.html
 detekt {
-    config = files("./detekt-config.yml")
-    buildUponDefaultConfig = true
-
-    reports {
-        html.enabled = false
-        xml.enabled = false
-        txt.enabled = false
-    }
+  config = files("./detekt-config.yml")
+  buildUponDefaultConfig = true
+  autoCorrect = true
 }
 
 tasks {
+  properties("javaVersion").let {
     // Set the compatibility versions to 1.8
     withType<JavaCompile> {
-        sourceCompatibility = "1.8"
-        targetCompatibility = "1.8"
+      sourceCompatibility = it
+      targetCompatibility = it
     }
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "1.8"
-        kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=enable")
+    withType<KotlinCompile> {
+      kotlinOptions.jvmTarget = it
+      kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=all")
     }
+  }
 
-    withType<io.gitlab.arturbosch.detekt.Detekt> {
-        jvmTarget = "1.8"
+  withType<Detekt> {
+    jvmTarget = "1.8"
+  }
+
+  withType<Copy> {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+  }
+
+  sourceSets {
+    main {
+      java.srcDirs("src/main/java")
+      resources.srcDirs("src/main/resources")
     }
+  }
 
-    withType<Copy> {
-        duplicatesStrategy = DuplicatesStrategy.INCLUDE
-    }
+  patchPluginXml {
+    version.set(properties("pluginVersion"))
+    sinceBuild.set(properties("pluginSinceBuild"))
+    untilBuild.set(properties("pluginUntilBuild"))
 
-    sourceSets {
-        main {
-            java.srcDirs("src/main/java")
-            resources.srcDirs("src/main/resources")
-        }
-    }
+    // Get the latest available change notes from the changelog file
+    changeNotes.set(
+      changelog.getLatest().toHTML()
+    )
+  }
 
-    patchPluginXml {
-        version.set(properties("pluginVersion"))
-        sinceBuild.set(properties("pluginSinceBuild"))
-        untilBuild.set(properties("pluginUntilBuild"))
+  runPluginVerifier {
+    ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
+  }
 
-        // Get the latest available change notes from the changelog file
-        changeNotes.set(
-            changelog.getLatest().toHTML()
-        )
-    }
+  buildSearchableOptions {
+    enabled = false
+  }
 
-    runPluginVerifier {
-        ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
-    }
+//  runIde {
+//    jvmArgs = properties("jvmArgs").split("")
+//    systemProperty("jb.service.configuration.url", properties("salesUrl"))
+//  }
 
-    buildSearchableOptions {
-        enabled = false
-    }
+  signPlugin {
+    certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
+    privateKey.set(System.getenv("PRIVATE_KEY"))
+    password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
+  }
 
-    publishPlugin {
+  publishPlugin {
 //    dependsOn("patchChangelog")
-        token.set(file("./publishToken").readText())
-    }
+    token.set(System.getenv("INTELLIJ_PUBLISH_TOKEN") ?: file("./publishToken").readText().trim())
+    channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
+  }
 
-    runIde {
-        ideDir.set(fileProperties("idePath"))
-    }
+  runIde {
+    ideDir.set(fileProperties("idePath"))
+  }
 }
