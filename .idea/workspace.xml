@@ -22,10 +22,26 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="chore(github): update renovate and deps">
+    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="bump">
+      <change afterPath="$PROJECT_DIR$/license.template" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/Base64.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copyright/ImageIcon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copyright/ImageIcon.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commitlint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/commitlint.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/detekt-config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/detekt-config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/ImageConverterFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/ImageConverterFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/ImageIconProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/ImageIconProvider.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ExtendedImageConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ExtendedImageConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ImageToIconConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ImageToIconConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/RegularImageConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/RegularImageConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/SVGImageConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/SVGImageConverter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/IconType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/IconType.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/pluginIcon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/pluginIcon.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,12 +81,36 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Image Icon Viewer" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Image Icon Viewer" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Image Icon Viewer" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Image Icon Viewer" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="PUSH_TAGS">
@@ -90,7 +130,15 @@
     </file-type-list>
   </component>
   <component name="GitToolBoxStore">
-    <option name="projectConfigVersion" value="2" />
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/222.2889-EAP-CANDIDATE-SNAPSHOT/fdb4e80a8874385d742546ae51f908059789f19d/ideaIC-222.2889-EAP-CANDIDATE-SNAPSHOT-sources.jar!/com/intellij/util/Base64.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="IRenRenameHistory">
+    <option name="rememberedNames">
+      <collection />
+    </option>
   </component>
   <component name="KubernetesApiPersistence">
     <option name="context" value="arn:aws:eks:us-east-1:884661243007:cluster/prod" />
@@ -118,12 +166,14 @@
   "keyToString": {
     "Project.color": "444a20",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/eliorboukhobza/projects/Image-Icon-Viewer",
+    "last_opened_file_path": "/Users/eliorboukhobza/projects/Image-Icon-Viewer/build/distributions/Image Icon Viewer-11.0.1.zip",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -138,7 +188,7 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [buildPlugin]">
+  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [build]">
     <configuration name="Image-Icon-Viewer [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -150,6 +200,27 @@
         </option>
         <option name="taskNames">
           <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Image-Icon-Viewer [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
@@ -255,6 +326,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Image-Icon-Viewer [build]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
@@ -267,6 +339,7 @@
     <option name="files">
       <set>
         <option value="$PROJECT_DIR$/build.gradle.kts" />
+        <option value="$PROJECT_DIR$/settings.gradle.kts" />
       </set>
     </option>
   </component>
@@ -291,7 +364,8 @@
       <workItem from="1632498473642" duration="2186000" />
       <workItem from="1632500862527" duration="913000" />
       <workItem from="1632846725973" duration="735000" />
-      <workItem from="1654289534486" duration="527000" />
+      <workItem from="1654289534486" duration="739000" />
+      <workItem from="1654290305066" duration="1979000" />
     </task>
     <task id="LOCAL-00001" summary="chore(project): upgrade deps, fix changelog, add linters">
       <created>1632492159492</created>
@@ -328,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632499290396</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="bump">
+      <created>1654290216244</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1654290216244</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,6 +417,17 @@
   </component>
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -352,7 +444,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="bump to 2020.3" />
-    <MESSAGE value="bump" />
     <MESSAGE value="migrate to kotlin" />
     <MESSAGE value="going back to 0.7.3" />
     <MESSAGE value="converting to kotlion" />
@@ -370,7 +461,8 @@
     <MESSAGE value="chore(github): add renovate, dependabot, stale etc" />
     <MESSAGE value="chore(github): update renovate" />
     <MESSAGE value="chore(github): update renovate and deps" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore(github): update renovate and deps" />
+    <MESSAGE value="bump" />
+    <option name="LAST_COMMIT_MESSAGE" value="bump" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

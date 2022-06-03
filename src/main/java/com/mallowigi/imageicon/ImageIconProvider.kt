@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (C) 2020 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
+ * Copyright (C) 2015-2022 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,35 +29,38 @@ import com.intellij.openapi.project.DumbAware
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFileSystemItem
 import java.io.IOException
-import java.util.*
+import java.util.Objects
 import javax.swing.Icon
 
 class ImageIconProvider : IconProvider(), DumbAware {
-    override fun getIcon(element: PsiElement, flags: Int): Icon? {
-        val containingFile = element.containingFile
-        if (isValidImagePath(containingFile)) {
-            val canonicalFile = Objects.requireNonNull(containingFile.virtualFile.canonicalFile)!!
-            val fileName = containingFile.name
-            val converter = ImageConverterFactory.create(fileName)
-            if (converter != null) {
-                try {
-                    return converter.convert(canonicalFile, canonicalFile.canonicalPath)
-                } catch (e: IOException) {
-                    LOG.warn(e.message)
-                }
-            }
+  override fun getIcon(element: PsiElement, flags: Int): Icon? {
+    val containingFile = element.containingFile
+    if (isValidImagePath(containingFile)) {
+      val canonicalFile = Objects.requireNonNull(containingFile.virtualFile.canonicalFile)!!
+      val fileName = containingFile.name
+      val converter = ImageConverterFactory.create(fileName)
+      if (converter != null) {
+        try {
+          return converter.convert(canonicalFile, canonicalFile.canonicalPath)
+        } catch (e: IOException) {
+          LOG.warn(e.message)
         }
-        return null
+      }
     }
+    return null
+  }
 
-    companion object {
-        private val LOG = Logger.getInstance(ImageIconProvider::class.java)
-        private fun isValidImagePath(containingFile: PsiFileSystemItem?): Boolean {
-            return containingFile != null &&
-                containingFile.virtualFile != null &&
-                containingFile.virtualFile.canonicalFile != null &&
-                containingFile.virtualFile.canonicalFile!!.canonicalPath != null &&
-                !containingFile.virtualFile.canonicalFile!!.canonicalPath!!.contains(".jar")
-        }
+  companion object {
+    private val LOG = Logger.getInstance(ImageIconProvider::class.java)
+    private fun isValidImagePath(containingFile: PsiFileSystemItem?): Boolean {
+      return when {
+        containingFile == null                                                      -> false
+        containingFile.virtualFile == null                                          -> false
+        containingFile.virtualFile.canonicalFile == null                            -> false
+        containingFile.virtualFile.canonicalFile!!.canonicalPath == null            -> false
+        containingFile.virtualFile.canonicalFile!!.canonicalPath!!.contains(".jar") -> false
+        else                                                                        -> true
+      }
     }
+  }
 }

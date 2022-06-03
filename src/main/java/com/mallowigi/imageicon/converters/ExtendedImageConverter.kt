@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (C) 2020 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
+ * Copyright (C) 2015-2022 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,95 +36,92 @@ import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.IOException
 import java.lang.Boolean.FALSE
-import java.util.*
+import java.util.Collections
 import java.util.stream.Collectors
 import java.util.stream.Stream
 import javax.imageio.ImageIO
 import javax.swing.Icon
 
 class ExtendedImageConverter : ImageToIconConverter, Disposable {
-    // Load TwelveMonkeys library to add all supported extensions
-    @get:NonNls
-    override val extensions: Set<String>
-        get() {
-            // Load TwelveMonkeys library to add all supported extensions
-            if (FALSE == CONTEXT_UPDATED.get()) {
-                Thread.currentThread().contextClassLoader = ExtendedImageConverter::class.java.classLoader
-                ImageIO.scanForPlugins()
-                val otherSupportedExts = Stream.of(*ImageIO.getReaderFormatNames())
-                    .map { obj: String -> obj.toLowerCase() }
-                    .collect(Collectors.toSet())
-                EXTENSIONS.addAll(otherSupportedExts)
-                CONTEXT_UPDATED.set(true)
-            }
-            return Collections.synchronizedSet(EXTENSIONS)
-        }
-
-    override val iconType: IconType
-        get() = IconType.EXTENDED
-
-    override fun loadImage(byteArrayInputStream: ByteArrayInputStream?, virtualFile: VirtualFile?): Image? {
-        return ImageLoader.loadFromStream(byteArrayInputStream!!)
+  // Load TwelveMonkeys library to add all supported extensions
+  @get:NonNls
+  override val extensions: Set<String>
+    get() {
+      // Load TwelveMonkeys library to add all supported extensions
+      if (FALSE == CONTEXT_UPDATED.get()) {
+        Thread.currentThread().contextClassLoader = ExtendedImageConverter::class.java.classLoader
+        ImageIO.scanForPlugins()
+        val otherSupportedExts = Stream.of(*ImageIO.getReaderFormatNames())
+          .map { obj: String -> obj.lowercase() }
+          .collect(Collectors.toSet())
+        EXTENSIONS.addAll(otherSupportedExts)
+        CONTEXT_UPDATED.set(true)
+      }
+      return Collections.synchronizedSet(EXTENSIONS)
     }
 
-    override fun convert(canonicalFile: VirtualFile?, canonicalPath: String?): Icon? {
-        try {
-            ImageIO.createImageInputStream(File(canonicalPath)).use { imageInputStream ->
-                val imageReaders = ImageIO.getImageReaders(imageInputStream)
-                while (imageReaders.hasNext()) {
-                    val imageReader = imageReaders.next()
-                    try {
-                        imageReader.input = imageInputStream
-                        val bufferedImage = imageReader.read(0)
-                        val image = bufferedImage.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH)
-                        if (image != null) return JBImageIcon(image)
-                    } catch (e: IOException) {
-                        LOG.warn(e.message)
-                    } finally {
-                        imageReader.dispose()
-                    }
-                }
-            }
-        } catch (e: IOException) {
+  override val iconType: IconType
+    get() = IconType.EXTENDED
+
+  override fun loadImage(byteArrayInputStream: ByteArrayInputStream?, virtualFile: VirtualFile?): Image? =
+    ImageLoader.loadFromStream(byteArrayInputStream!!)
+
+  override fun convert(canonicalFile: VirtualFile?, canonicalPath: String?): Icon? {
+    try {
+      ImageIO.createImageInputStream(File(canonicalPath)).use { imageInputStream ->
+        val imageReaders = ImageIO.getImageReaders(imageInputStream)
+        while (imageReaders.hasNext()) {
+          val imageReader = imageReaders.next()
+          try {
+            imageReader.input = imageInputStream
+            val bufferedImage = imageReader.read(0)
+            val image = bufferedImage.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH)
+            if (image != null) return JBImageIcon(image)
+          } catch (e: IOException) {
             LOG.warn(e.message)
-            return null
+          } finally {
+            imageReader.dispose()
+          }
         }
-        return null
+      }
+    } catch (e: IOException) {
+      LOG.warn(e.message)
+      return null
     }
+    return null
+  }
 
-    override fun toBase64(imageWrapper: ImageWrapper?): String? = null
+  override fun toBase64(imageWrapper: ImageWrapper?): String? = null
 
-    override fun dispose() = CONTEXT_UPDATED.remove()
+  override fun dispose() = CONTEXT_UPDATED.remove()
 
-    companion object {
-        private val EXTENSIONS: MutableSet<String> = mutableSetOf(
-            "bigtiff",
-            "dcx",
-            "icns",
-            "ico",
-            "jbig2",
-            "pam",
-            "pbm",
-            "pcx",
-            "pgm",
-            "pnm",
-            "ppm",
-            "psd",
-            "rgbe",
-            "tga",
-            "tif",
-            "tiff",
-            "wbmp",
-            "xbm",
-            "xpm"
-        )
+  companion object {
+    private val EXTENSIONS: MutableSet<String> = mutableSetOf(
+      "bigtiff",
+      "dcx",
+      "icns",
+      "ico",
+      "jbig2",
+      "pam",
+      "pbm",
+      "pcx",
+      "pgm",
+      "pnm",
+      "ppm",
+      "psd",
+      "rgbe",
+      "tga",
+      "tif",
+      "tiff",
+      "wbmp",
+      "xbm",
+      "xpm"
+    )
 
-        /**
-         * Thread that we use to preload TwelveMonkeys extensions
-         */
-        private val CONTEXT_UPDATED = ThreadLocal.withInitial { false }
-        private const val WIDTH = 16
-        private const val HEIGHT = 16
-        private val LOG = Logger.getInstance(RegularImageConverter::class.java)
-    }
+    /** Thread that we use to preload TwelveMonkeys extensions. */
+    private val CONTEXT_UPDATED = ThreadLocal.withInitial { false }
+    private const val WIDTH = 16
+    private const val HEIGHT = 16
+    private val LOG = Logger.getInstance(RegularImageConverter::class.java)
+  }
 }

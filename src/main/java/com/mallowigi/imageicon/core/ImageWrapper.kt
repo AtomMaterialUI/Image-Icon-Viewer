@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (C) 2020 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
+ * Copyright (C) 2015-2022 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,41 +28,45 @@ import com.intellij.util.ImageLoader
 import com.intellij.util.RetinaImage
 import java.awt.Image
 
+private const val AT2X = 32.0f
+
+private const val AT1X = 16.0f
+
 class ImageWrapper(val iconType: IconType, image: Image, val imageBytes: ByteArray, val isSvg: Boolean = false) {
-    val image: Image = scaleImage(image)
+  val image: Image = scaleImage(image)
 
-    private fun scaleImage(image: Image): Image {
-        if (isSvg) return scaleSvg(image)
+  private fun scaleImage(image: Image): Image {
+    if (isSvg) return scaleSvg(image)
 
-        val width = image.getWidth(null)
-        val height = image.getHeight(null)
+    val width = image.getWidth(null)
+    val height = image.getHeight(null)
 
-        require(width == height) { "Image should be square." }
-        require(width > 0) { "Width and height are unknown." }
+    require(width == height) { "Image should be square." }
+    require(width > 0) { "Width and height are unknown." }
 
-        if (width == SIZE) return image
-        if (width == RETINA) return RetinaImage.createFrom(image)
+    if (width == SIZE) return image
+    if (width == RETINA) return RetinaImage.createFrom(image)
 
-        var widthToScaleTo = JBUIScale.scale(16.0f)
-        var retina = false
+    var widthToScaleTo = JBUIScale.scale(AT1X)
+    var retina = false
 
-        if (width >= RETINA) {
-            widthToScaleTo = JBUIScale.scale(32.0f)
-            retina = true
-        }
-        val scaledImage = ImageLoader.scaleImage(image, (widthToScaleTo / width).toDouble())
-        return if (retina) RetinaImage.createFrom(scaledImage) else scaledImage
+    if (width >= RETINA) {
+      widthToScaleTo = JBUIScale.scale(AT2X)
+      retina = true
     }
+    val scaledImage = ImageLoader.scaleImage(image, (widthToScaleTo / width).toDouble())
+    return if (retina) RetinaImage.createFrom(scaledImage) else scaledImage
+  }
 
-    private fun scaleSvg(image: Image): Image {
-        val width = image.getWidth(null)
-        if (width == SIZE) return image
+  private fun scaleSvg(image: Image): Image {
+    val width = image.getWidth(null)
+    if (width == SIZE) return image
 
-        return ImageLoader.scaleImage(image, SIZE, SIZE)
-    }
+    return ImageLoader.scaleImage(image, SIZE, SIZE)
+  }
 
-    companion object {
-        val SIZE = JBUIScale.scale(16)
-        val RETINA = JBUIScale.scale(32)
-    }
+  companion object {
+    val SIZE = JBUIScale.scale(16)
+    val RETINA = JBUIScale.scale(32)
+  }
 }

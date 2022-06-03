@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (C) 2020 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
+  ~ Copyright (C) 2015-2022 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -29,12 +29,13 @@
     <vendor email="elior@material-theme.com" url="https://github.com/mallowigi">AtomMaterial</vendor>
 
     <description><![CDATA[
-     <h1>Image Icon Viewer</h1>
-  <br/>
-  <h2>Preview project images right inside the Project View or Tabs.</h2>
-  <br/>
-  <p>This is particularly helpful when working with icons, as it gives you a preview without needing to open the file.</p>
-]]></description>
+        <h1>Image Icon Viewer</h1>
+        <br />
+        <h2>Preview project images right inside the Project View or Tabs.</h2>
+        <br />
+        <p>This is particularly helpful when working with icons, as it gives you a preview without needing to open the
+            file.</p>
+        ]]></description>
 
     <change-notes><![CDATA[]]></change-notes>
 

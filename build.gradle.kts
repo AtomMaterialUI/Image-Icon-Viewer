@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage
+ * Copyright (C) 2015-2022 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,9 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
- *
  */
+@file:Suppress("SpellCheckingInspection", "HardCodedStringLiteral")
 
-import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 fun properties(key: String) = project.findProperty(key).toString()
@@ -42,9 +40,9 @@ plugins {
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.3.1"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
-  id("io.gitlab.arturbosch.detekt") version "1.20.0"
+//  id("io.gitlab.arturbosch.detekt") version "1.20.0"
   // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
-  id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+//  id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
 }
 
 group = properties("pluginGroup")
@@ -67,7 +65,7 @@ java {
 }
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
+//  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
   implementation("com.twelvemonkeys.imageio:imageio-core:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-metadata:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-sgi:$depsTwelveMonkeys")
@@ -116,11 +114,11 @@ changelog {
 
 // Configure detekt plugin.
 // Read more: https://detekt.github.io/detekt/kotlindsl.html
-detekt {
-  config = files("./detekt-config.yml")
-  buildUponDefaultConfig = true
-  autoCorrect = true
-}
+//detekt {
+//  config = files("./detekt-config.yml")
+//  buildUponDefaultConfig = true
+//  autoCorrect = true
+//}
 
 tasks {
   properties("javaVersion").let {
@@ -135,9 +133,10 @@ tasks {
     }
   }
 
-  withType<Detekt> {
-    jvmTarget = "1.8"
-  }
+//  withType<Detekt> {
+//    jvmTarget = properties("javaVersion")
+//    reports.xml.required.set(true)
+//  }
 
   withType<Copy> {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (C) 2020 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
+ * Copyright (C) 2015-2022 Elior "Mallowigi" Boukhobza, David Sommer and Jonathan Lermitage.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,9 +27,9 @@ import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.util.Ref
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.scale.ScaleContext
-import com.intellij.util.Base64
 import com.intellij.util.IconUtil
 import com.intellij.util.SVGLoader
+import com.mallowigi.imageicon.core.Base64
 import com.mallowigi.imageicon.core.IconType
 import com.mallowigi.imageicon.core.ImageWrapper
 import org.jetbrains.annotations.NonNls
@@ -43,35 +43,35 @@ import java.net.URL
 import javax.swing.Icon
 
 class SVGImageConverter : ImageToIconConverter {
-    @get:NonNls
-    override val extensions: Set<String>
-        get() = setOf("svg")
+  @get:NonNls
+  override val extensions: Set<String>
+    get() = setOf("svg")
 
-    override val iconType: IconType
-        get() = IconType.SVG
+  override val iconType: IconType
+    get() = IconType.SVG
 
-    @Suppress("UnstableApiUsage")
-    @Throws(IOException::class)
-    override fun loadImage(byteArrayInputStream: ByteArrayInputStream?, virtualFile: VirtualFile?): Image? {
-        val url = Ref.create<URL>()
-        try {
-            url.set(File(virtualFile!!.path).toURI().toURL())
-        } catch (ex: MalformedURLException) {
-            LOG.warn(ex.message)
-        }
-        return SVGLoader.loadHiDPI(url.get(), FileInputStream(virtualFile!!.path), ScaleContext.create())
+  @Suppress("UnstableApiUsage")
+  @Throws(IOException::class)
+  override fun loadImage(byteArrayInputStream: ByteArrayInputStream?, virtualFile: VirtualFile?): Image? {
+    val url = Ref.create<URL>()
+    try {
+      url.set(File(virtualFile!!.path).toURI().toURL())
+    } catch (ex: MalformedURLException) {
+      LOG.warn(ex.message)
     }
+    return SVGLoader.loadHiDPI(url.get(), FileInputStream(virtualFile!!.path), ScaleContext.create())
+  }
 
-    @Throws(IOException::class)
-    override fun convert(canonicalFile: VirtualFile?, canonicalPath: String?): Icon? {
-        val imageWrapper = getImageWrapper(canonicalFile!!) ?: return null
-        val fromBase64 = fromBase64(toBase64(imageWrapper), iconType, canonicalFile, true) ?: return null
-        return IconUtil.createImageIcon(fromBase64.image)
-    }
+  @Throws(IOException::class)
+  override fun convert(canonicalFile: VirtualFile?, canonicalPath: String?): Icon? {
+    val imageWrapper = getImageWrapper(canonicalFile!!) ?: return null
+    val fromBase64 = fromBase64(toBase64(imageWrapper), iconType, canonicalFile, true) ?: return null
+    return IconUtil.createImageIcon(fromBase64.image)
+  }
 
-    override fun toBase64(imageWrapper: ImageWrapper?): String? = Base64.encode(imageWrapper!!.imageBytes)
+  override fun toBase64(imageWrapper: ImageWrapper?): String? = Base64.encode(imageWrapper!!.imageBytes)
 
-    companion object {
-        private val LOG = Logger.getInstance(SVGImageConverter::class.java)
-    }
+  companion object {
+    private val LOG = Logger.getInstance(SVGImageConverter::class.java)
+  }
 }
