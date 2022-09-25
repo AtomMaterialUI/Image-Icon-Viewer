@@ -22,11 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="fix detekt issues but disable detekt because it doesnt work.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="support for 2022.3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,21 +142,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Project.color": "444a20",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/eliorboukhobza/projects/Image-Icon-Viewer/build/distributions/Image Icon Viewer-11.0.1.zip",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Project.color&quot;: &quot;444a20&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/eliorboukhobza/projects/Image-Icon-Viewer/build/distributions/Image Icon Viewer-11.0.1.zip&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -171,7 +169,7 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [runIde]">
+  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [buildPlugin]">
     <configuration name="Image-Icon-Viewer [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -309,9 +307,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [build]" />
-        <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [runPluginVerifier]" />
       </list>
@@ -453,7 +451,8 @@
     <MESSAGE value="chore(github): update renovate and deps" />
     <MESSAGE value="bump" />
     <MESSAGE value="fix detekt issues but disable detekt because it doesnt work." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix detekt issues but disable detekt because it doesnt work." />
+    <MESSAGE value="support for 2022.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="support for 2022.3" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

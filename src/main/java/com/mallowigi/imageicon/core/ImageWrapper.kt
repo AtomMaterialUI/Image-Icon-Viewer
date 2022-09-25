@@ -39,9 +39,7 @@ class ImageWrapper(val iconType: IconType, image: Image, val imageBytes: ByteArr
     if (isSvg) return scaleSvg(image)
 
     val width = image.getWidth(null)
-    val height = image.getHeight(null)
 
-    require(width == height) { "Image should be square." }
     require(width > 0) { "Width and height are unknown." }
 
     if (width == SIZE) return image
