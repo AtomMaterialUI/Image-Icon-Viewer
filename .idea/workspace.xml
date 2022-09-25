@@ -22,26 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="bump">
-      <change afterPath="$PROJECT_DIR$/license.template" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/Base64.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copyright/ImageIcon.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copyright/ImageIcon.xml" afterDir="false" />
+    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="fix detekt issues but disable detekt because it doesnt work.">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commitlint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/commitlint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/detekt-config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/detekt-config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/ImageConverterFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/ImageConverterFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/ImageIconProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/ImageIconProvider.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ExtendedImageConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ExtendedImageConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ImageToIconConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/ImageToIconConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/RegularImageConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/RegularImageConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/SVGImageConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/SVGImageConverter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/IconType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/IconType.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/pluginIcon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/pluginIcon.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,9 +117,6 @@
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jetbrains.intellij.idea/ideaIC/222.2889-EAP-CANDIDATE-SNAPSHOT/fdb4e80a8874385d742546ae51f908059789f19d/ideaIC-222.2889-EAP-CANDIDATE-SNAPSHOT-sources.jar!/com/intellij/util/Base64.java" root0="SKIP_INSPECTION" />
-  </component>
   <component name="IRenRenameHistory">
     <option name="rememberedNames">
       <collection />
@@ -173,7 +155,8 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -188,7 +171,7 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [build]">
+  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [runIde]">
     <configuration name="Image-Icon-Viewer [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -326,9 +309,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [build]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
-        <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [runPluginVerifier]" />
       </list>
@@ -365,7 +348,7 @@
       <workItem from="1632500862527" duration="913000" />
       <workItem from="1632846725973" duration="735000" />
       <workItem from="1654289534486" duration="739000" />
-      <workItem from="1654290305066" duration="1979000" />
+      <workItem from="1654290305066" duration="2200000" />
     </task>
     <task id="LOCAL-00001" summary="chore(project): upgrade deps, fix changelog, add linters">
       <created>1632492159492</created>
@@ -409,7 +392,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654290216244</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix detekt issues but disable detekt because it doesnt work.">
+      <created>1654292328262</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1654292328262</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,7 +452,8 @@
     <MESSAGE value="chore(github): update renovate" />
     <MESSAGE value="chore(github): update renovate and deps" />
     <MESSAGE value="bump" />
-    <option name="LAST_COMMIT_MESSAGE" value="bump" />
+    <MESSAGE value="fix detekt issues but disable detekt because it doesnt work." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix detekt issues but disable detekt because it doesnt work." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
