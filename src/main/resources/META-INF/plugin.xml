@@ -42,6 +42,10 @@
     <idea-version since-build="211.0"/>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
+    <depends>org.jetbrains.android</depends>
+    <incompatible-with>com.intellij.modules.ultimate</incompatible-with>
+
 
     <extensions defaultExtensionNs="com.intellij">
         <iconProvider implementation="com.mallowigi.imageicon.ImageIconProvider"/>
