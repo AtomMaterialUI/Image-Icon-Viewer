@@ -22,9 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="support for 2022.3">
+    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="support for AS">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/core/ImageWrapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +104,11 @@
         <option name="title" value="All" />
       </GitPushTagMode>
     </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="jdk11" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -169,7 +176,7 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [buildPlugin]">
+  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [publishPlugin]">
     <configuration name="Image-Icon-Viewer [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -307,8 +314,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
+        <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [build]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [runPluginVerifier]" />
@@ -452,7 +459,9 @@
     <MESSAGE value="bump" />
     <MESSAGE value="fix detekt issues but disable detekt because it doesnt work." />
     <MESSAGE value="support for 2022.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="support for 2022.3" />
+    <MESSAGE value="remove &quot;image should be square&quot;" />
+    <MESSAGE value="support for AS" />
+    <option name="LAST_COMMIT_MESSAGE" value="support for AS" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
