@@ -36,13 +36,13 @@ plugins {
   // Kotlin support
   id("org.jetbrains.kotlin.jvm") version "1.8.10"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.13.0"
+  id("org.jetbrains.intellij") version "1.13.3"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "2.0.0"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
   id("io.gitlab.arturbosch.detekt") version "1.22.0"
   // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
-  id("org.jlleitschuh.gradle.ktlint") version "11.2.0"
+  id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
 }
 
 group = properties("pluginGroup")
