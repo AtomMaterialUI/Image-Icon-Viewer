@@ -34,15 +34,15 @@ plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "1.8.20"
+  id("org.jetbrains.kotlin.jvm") version "1.9.0"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "1.13.3"
+  id("org.jetbrains.intellij") version "1.15.0"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
-  id("org.jetbrains.changelog") version "2.0.0"
+  id("org.jetbrains.changelog") version "2.1.1"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
-  id("io.gitlab.arturbosch.detekt") version "1.22.0"
+  id("io.gitlab.arturbosch.detekt") version "1.23.0"
   // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
-  id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
+  id("org.jlleitschuh.gradle.ktlint") version "11.5.0"
 }
 
 group = properties("pluginGroup")
