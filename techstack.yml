@@ -1,7 +1,8 @@
 repo_name: mallowigi/Image-Icon-Viewer
 report_id: 5847459801cc36a3c978894b731761b6
+version: 0.1
 repo_type: Public
-timestamp: '2023-11-19T07:54:04+00:00'
+timestamp: '2024-01-05T08:36:53+00:00'
 requested_by: mallowigi
 provider: github
 branch: master
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/995/K85ZWV2F.png
+  detection_source_url: https://github.com/mallowigi/Image-Icon-Viewer
   detection_source: Repo Metadata
 - name: JavaScript
   description: Lightweight, interpreted, object-oriented language with first-class
@@ -26,6 +28,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/mallowigi/Image-Icon-Viewer
   detection_source: Repo Metadata
 - name: Kotlin
   description: Statically typed Programming Language targeting JVM and JavaScript
@@ -35,6 +38,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/3750/pCfEzr6L.png
+  detection_source_url: https://github.com/mallowigi/Image-Icon-Viewer
   detection_source: Repo Metadata
 - name: Git
   description: Fast, scalable, distributed revision control system
@@ -44,6 +48,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/mallowigi/Image-Icon-Viewer
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -53,9 +58,10 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/mallowigi/Image-Icon-Viewer/blob/master/.github/workflows/quality-checks.yml
   detection_source: ".github/workflows/quality-checks.yml"
   last_updated_by: renovate[bot]
-  last_updated_on: 2023-10-06 08:05:45.000000000 Z
+  last_updated_on: 2023-11-23 14:39:12.000000000 Z
 - name: Gradle
   description: A powerful build system for the JVM
   website_url: https://www.gradle.org/
@@ -65,7 +71,8 @@ tools:
   category: Build, Test, Deploy
   sub_category: Java Build Tools
   image_url: https://img.stackshare.io/service/975/gradlephant-social-black-bg.png
-  detection_source: gradlew.bat
+  detection_source_url: https://github.com/mallowigi/Image-Icon-Viewer/blob/master/gradlew
+  detection_source: gradlew
   last_updated_by: Elior
   last_updated_on: 2022-06-03 21:03:36.000000000 Z
 - name: HTML
@@ -74,6 +81,7 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/2270/no-img-open-source.png
+  detection_source_url: https://github.com/mallowigi/Image-Icon-Viewer/blob/master/docs/CHANGELOG.html
   detection_source: docs/CHANGELOG.html
   last_updated_by: mallowigi
   last_updated_on: 2019-01-25 22:44:34.000000000 Z
