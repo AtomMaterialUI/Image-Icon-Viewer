@@ -71,13 +71,14 @@ class RegularImageConverter : ImageToIconConverter {
     }
   }
 
+  @Suppress("UnstableApiUsage")
   override fun toBase64(imageWrapper: ImageWrapper?): String? {
     val outputStream = ByteArrayOutputStream()
     try {
       var image = imageWrapper!!.image
 
       when (image) {
-        is JBHiDPIScaledImage -> image = image.delegate
+        is JBHiDPIScaledImage -> image = image.delegate!!
         is ToolkitImage       -> image = image.bufferedImage
         !is RenderableImage   -> {
           val bufferedImage = UIUtil.createImage(
