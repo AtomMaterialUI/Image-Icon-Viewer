@@ -72,7 +72,7 @@ kotlin {
 }
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.4")
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
   implementation("com.twelvemonkeys.imageio:imageio-core:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-metadata:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-sgi:$depsTwelveMonkeys")
