@@ -2,6 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
+      <module name="Image_Icon_Viewer" target="17" />
+      <module name="Image_Icon_Viewer.main" target="17" />
+      <module name="Image_Icon_Viewer.test" target="17" />
       <module name="imageicon" target="14" />
     </bytecodeTargetLevel>
   </component>

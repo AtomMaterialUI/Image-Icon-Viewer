@@ -22,9 +22,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="supprt for 2024.1">
+    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="chore(package): support for 2024.1">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/CHANGELOG.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/CHANGELOG.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,13 +82,7 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Image Icon Viewer" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Image Icon Viewer" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
+                <item name="intellij platform" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -109,6 +112,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;mallowigi&quot;
+  }
+}</component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -119,6 +128,15 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:mallowigi/Image-Icon-Viewer.git&quot;,
+    &quot;accountId&quot;: &quot;88cd475f-4a52-4372-a138-80e8ea9bd2b9&quot;
+  }
+}</component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
   </component>
   <component name="IRenRenameHistory">
     <option name="rememberedNames">
@@ -132,6 +150,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/bin/php" />
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="2" />
   </component>
@@ -150,28 +169,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Image-Icon-Viewer [publishPlugin].executor": "Run",
-    "Gradle.Image-Icon-Viewer [runIde].executor": "Run",
-    "Gradle.Image-Icon-Viewer [setupDependencies].executor": "Run",
-    "Project.color": "444a20",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/eliorboukhobza/projects/Image-Icon-Viewer",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Kotlin",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Image-Icon-Viewer [buildPlugin].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Image-Icon-Viewer [publishPlugin].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Image-Icon-Viewer [runIde].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Image-Icon-Viewer [setupDependencies].executor&quot;: &quot;Run&quot;,
+    &quot;Project.color&quot;: &quot;444a20&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;ignore.preview.features.used&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/eliorboukhobza/projects/Image-Icon-Viewer&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;/Users/eliorboukhobza/.gradle&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -185,7 +217,7 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [publishPlugin]">
+  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [runIde] (1)">
     <configuration name="Image-Icon-Viewer [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -268,7 +300,7 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Image-Icon-Viewer [publishPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Image-Icon-Viewer [publishPlugin]" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="env">
           <map>
@@ -285,6 +317,28 @@
         <option name="taskNames">
           <list>
             <option value="publishPlugin" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Image-Icon-Viewer [runIde] (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="runIde" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -338,15 +392,16 @@
     <list>
       <item itemvalue="Gradle.Image-Icon-Viewer [detekt]" />
       <item itemvalue="Gradle.Image-Icon-Viewer [runIde]" />
+      <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
+      <item itemvalue="Gradle.Image-Icon-Viewer [runIde] (1)" />
       <item itemvalue="Gradle.Image-Icon-Viewer [build]" />
       <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
       <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
-      <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
       <item itemvalue="Gradle.Image-Icon-Viewer [runPluginVerifier]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
+        <item itemvalue="Gradle.Image-Icon-Viewer [runIde] (1)" />
         <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [build]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
@@ -357,8 +412,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-fd6de256fdba-JavaScript-IU-241.8102.112" />
-        <option value="jdk-17.0.10-corretto-17.0.10-5b172459f563-52bcd064" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -394,6 +449,7 @@
       <workItem from="1632846725973" duration="735000" />
       <workItem from="1654289534486" duration="739000" />
       <workItem from="1654290305066" duration="2200000" />
+      <workItem from="1706891304545" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="chore(project): upgrade deps, fix changelog, add linters">
       <created>1632492159492</created>
@@ -502,8 +558,13 @@
     <MESSAGE value="remove &quot;image should be square&quot;" />
     <MESSAGE value="support for AS" />
     <MESSAGE value="supprt for 2024.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="supprt for 2024.1" />
+    <MESSAGE value="chore(package): support for 2024.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore(package): support for 2024.1" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Image-Icon-Viewer.iml" filepath="$PROJECT_DIR$/.idea/Image-Icon-Viewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Image_Icon_Viewer.iml" filepath="$PROJECT_DIR$/.idea/modules/Image_Icon_Viewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Image_Icon_Viewer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Image_Icon_Viewer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Image_Icon_Viewer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Image_Icon_Viewer.test.iml" />
     </modules>
   </component>
 </project>

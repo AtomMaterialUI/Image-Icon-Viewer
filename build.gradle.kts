@@ -28,7 +28,7 @@ import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-fun properties(key: String) = project.findProperty(key).toString()
+fun properties(key: String) = providers.gradleProperty(key).get()
 
 fun environment(key: String) = providers.environmentVariable(key)
 
@@ -42,33 +42,38 @@ plugins {
   alias(libs.plugins.kotlin)
   alias(libs.plugins.gradleIntelliJPlugin)
   alias(libs.plugins.changelog)
-  alias(libs.plugins.qodana)
   alias(libs.plugins.detekt)
   alias(libs.plugins.ktlint)
-  alias(libs.plugins.kover)
 }
 
-group = properties("pluginGroup")
-version = properties("pluginVersion")
+// Import variables from gradle.properties file
+val pluginGroup: String by project
+val pluginName: String by project
+val pluginVersion: String by project
+val pluginSinceBuild: String by project
+val pluginUntilBuild: String by project
+val pluginVerifierIdeVersions: String by project
+
+val platformType: String by project
+val platformVersion: String by project
+val platformPlugins: String by project
+val platformDownloadSources: String by project
+
+group = pluginGroup
+version = pluginVersion
+
 val depsTwelveMonkeys = properties("depsTwelveMonkeys")
 
 // Configure project's dependencies
 repositories {
   mavenCentral()
-  maven(url = "https://dl.bintray.com/jetbrains/intellij-plugin-service")
-  maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
-  maven(url = "https://www.jetbrains.com/intellij-repository/releases")
-  maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
-}
+  mavenLocal()
+  gradlePluginPortal()
 
-java {
-  toolchain {
-    languageVersion.set(JavaLanguageVersion.of(17))
+  intellijPlatform {
+    defaultRepositories()
+    jetbrainsRuntime()
   }
-}
-
-kotlin {
-  jvmToolchain(17)
 }
 
 dependencies {
@@ -84,34 +89,58 @@ dependencies {
   implementation("com.twelvemonkeys.imageio:imageio-pnm:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-tga:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-bmp:$depsTwelveMonkeys")
+
+  intellijPlatform {
+    intellijIdeaUltimate(platformVersion, useInstaller = false)
+    instrumentationTools()
+    pluginVerifier()
+    zipSigner()
+  }
 }
 
-// Configure gradle-intellij-plugin plugin.
-// Read more: https://github.com/JetBrains/gradle-intellij-plugin
-intellij {
-  pluginName.set(properties("pluginName"))
-  version.set(properties("platformVersion"))
-  type.set(properties("platformType"))
-  downloadSources.set(true)
-  instrumentCode.set(true)
-  updateSinceUntilBuild.set(true)
-//  localPath.set(properties("idePath"))
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(17))
+  }
+}
 
-  // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-//    plugins.set(
-//        listOf(
-//            "java",
-//            "com.intellij.CloudConfig",
-//            "Git4Idea",
-//        )
-//    )
+kotlin {
+  jvmToolchain(17)
+}
+
+intellijPlatform {
+  pluginConfiguration {
+    id = pluginGroup
+    name = pluginName
+    version = pluginVersion
+
+    ideaVersion {
+      sinceBuild = pluginSinceBuild
+      untilBuild = pluginUntilBuild
+    }
+
+    // changeNotes = provider {
+    //   markdownToHTML(File("./docs/RELEASE-NOTES.md").readText())
+    // }
+  }
+
+  publishing {
+    token = environment("PUBLISH_TOKEN")
+    channels = listOf(pluginVersion.split('-').getOrElse(1) { "default" }.split('.').first())
+  }
+
+  signing {
+    certificateChain = environment("CERTIFICATE_CHAIN")
+    privateKey = environment("PRIVATE_KEY")
+    password = environment("PRIVATE_KEY_PASSWORD")
+  }
 }
 
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
   path.set("${project.projectDir}/docs/CHANGELOG.md")
-  version.set(properties("pluginVersion"))
+  version.set(pluginVersion)
   header.set(provider { version.get() })
   itemPrefix.set("-")
   keepUnreleasedSection.set(true)
@@ -129,73 +158,22 @@ detekt {
 }
 
 tasks {
-  wrapper {
-    gradleVersion = properties("gradleVersion")
+  withType<JavaCompile> {
+    sourceCompatibility = "17"
+    targetCompatibility = "17"
+    options.compilerArgs = listOf("-Xlint:deprecation", "-Xlint:unchecked")
   }
 
-  properties("javaVersion").let {
-    // Set the compatibility versions to 1.8
-    withType<JavaCompile> {
-      sourceCompatibility = it
-      targetCompatibility = it
-    }
-    withType<KotlinCompile> {
-      kotlinOptions.jvmTarget = it
-      kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=all")
-    }
+  withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "17"
   }
 
   withType<Detekt> {
-    jvmTarget = properties("javaVersion")
-    reports.xml.required = true
+    jvmTarget = "17"
   }
 
-  withType<Copy> {
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
-  }
-
-  sourceSets {
-    main {
-      java.srcDirs("src/main/java")
-      resources.srcDirs("src/main/resources")
-    }
-  }
-
-  patchPluginXml {
-    version = properties("pluginVersion")
-    sinceBuild = properties("pluginSinceBuild")
-    untilBuild = properties("pluginUntilBuild")
-
-    // Get the latest available change notes from the changelog file
-    changeNotes = changelog.renderItem(changelog.getLatest(), Changelog.OutputType.HTML)
-  }
-
-  runPluginVerifier {
-    ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
-  }
-
-  buildSearchableOptions {
-    enabled = false
-  }
-
-//  runIde {
-//    jvmArgs = properties("jvmArgs").split("")
-//    systemProperty("jb.service.configuration.url", properties("salesUrl"))
-//  }
-
-  signPlugin {
-    certificateChain = environment("CERTIFICATE_CHAIN")
-    privateKey = environment("PRIVATE_KEY")
-    password = environment("PRIVATE_KEY_PASSWORD")
-  }
-
-  publishPlugin {
-    token = environment("PUBLISH_TOKEN")
-    channels = listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first())
-  }
-
-  runIde {
-    ideDir = fileProperties("idePath")
+  wrapper {
+    gradleVersion = properties("gradleVersion")
   }
 
   register("markdownToHtml") {
