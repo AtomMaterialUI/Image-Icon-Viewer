@@ -21,8 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-@file:Suppress("JAVA_MODULE_DOES_NOT_EXPORT_PACKAGE")
-
 package com.mallowigi.imageicon.converters
 
 import com.intellij.openapi.diagnostic.Logger
@@ -66,7 +64,7 @@ class RegularImageConverter : ImageToIconConverter {
     val imageIcon = loadImageIcon(canonicalFile)
     return imageIcon ?: try {
       ImageIcon(ImageIO.read(File(canonicalFile!!.path)).getScaledInstance(WIDTH, HEIGHT, Image.SCALE_SMOOTH))
-    } catch (e: IOException) {
+    } catch (_: IOException) {
       null
     }
   }
