@@ -22,10 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="supprt for 2024.1">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="255ae0c0-64f7-4e90-bf37-69c1f9e48f3d" name="Default Changelist" comment="Minify HTML and update Kotlin configurations&#10;&#10;Minified the HTML content in docs/CHANGELOG.html for better readability and consistency. Removed unnecessary annotations in RegularImageConverter.kt. Updated .idea configuration files with recent changes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/CHANGELOG.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/CHANGELOG.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/RegularImageConverter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mallowigi/imageicon/converters/RegularImageConverter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -195,7 +195,7 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [runIde]">
+  <component name="RunManager" selected="Gradle.Image-Icon-Viewer [buildPlugin]">
     <configuration name="Image-Icon-Viewer [buildPlugin]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -369,8 +369,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [buildPlugin]" />
+        <item itemvalue="Gradle.Image-Icon-Viewer [publishPlugin]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [build]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [ktlintFormat]" />
         <item itemvalue="Gradle.Image-Icon-Viewer [runPluginVerifier]" />
@@ -523,9 +523,10 @@
     <MESSAGE value="fix detekt issues but disable detekt because it doesnt work." />
     <MESSAGE value="support for 2022.3" />
     <MESSAGE value="remove &quot;image should be square&quot;" />
-    <MESSAGE value="support for AS" />
     <MESSAGE value="supprt for 2024.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="supprt for 2024.1" />
+    <MESSAGE value="support for AS" />
+    <MESSAGE value="Minify HTML and update Kotlin configurations&#10;&#10;Minified the HTML content in docs/CHANGELOG.html for better readability and consistency. Removed unnecessary annotations in RegularImageConverter.kt. Updated .idea configuration files with recent changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Minify HTML and update Kotlin configurations&#10;&#10;Minified the HTML content in docs/CHANGELOG.html for better readability and consistency. Removed unnecessary annotations in RegularImageConverter.kt. Updated .idea configuration files with recent changes." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

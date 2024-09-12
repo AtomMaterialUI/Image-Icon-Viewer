@@ -77,7 +77,7 @@ class RegularImageConverter : ImageToIconConverter {
 
       when (image) {
         is JBHiDPIScaledImage -> image = image.delegate!!
-        is ToolkitImage       -> image = image.bufferedImage
+        // is ToolkitImage       -> image = image.bufferedImage
         !is RenderableImage   -> {
           val bufferedImage = UIUtil.createImage(
             GRAPHICS_CFG,
