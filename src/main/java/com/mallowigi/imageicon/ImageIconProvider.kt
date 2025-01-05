@@ -24,43 +24,30 @@
 package com.mallowigi.imageicon
 
 import com.intellij.ide.IconProvider
-import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.DumbAware
 import com.intellij.psi.PsiElement
-import com.intellij.psi.PsiFileSystemItem
-import java.io.IOException
-import java.util.Objects
+import com.intellij.psi.search.GlobalSearchScope
+import com.intellij.util.indexing.FileBasedIndex
 import javax.swing.Icon
 
 class ImageIconProvider : IconProvider(), DumbAware {
-  override fun getIcon(element: PsiElement, flags: Int): Icon? {
-    val containingFile = element.containingFile
-    if (isValidImagePath(containingFile)) {
-      val canonicalFile = Objects.requireNonNull(containingFile.virtualFile.canonicalFile)!!
-      val fileName = containingFile.name
-      val converter = ImageConverterFactory.create(fileName)
-      if (converter != null) {
-        try {
-          return converter.convert(canonicalFile, canonicalFile.canonicalPath)
-        } catch (e: IOException) {
-          LOG.warn(e.message)
-        }
-      }
-    }
-    return null
-  }
+    override fun getIcon(element: PsiElement, flags: Int): Icon? {
+        val fileBasedIndex = FileBasedIndex.getInstance()
+        var icon: Icon? = null
+        val project = element.project
+        val file = element.containingFile?.virtualFile ?: return null
 
-  companion object {
-    private val LOG = Logger.getInstance(ImageIconProvider::class.java)
-    private fun isValidImagePath(containingFile: PsiFileSystemItem?): Boolean {
-      return when {
-        containingFile == null                                                      -> false
-        containingFile.virtualFile == null                                          -> false
-        containingFile.virtualFile.canonicalFile == null                            -> false
-        containingFile.virtualFile.canonicalFile!!.canonicalPath == null            -> false
-        containingFile.virtualFile.canonicalFile!!.canonicalPath!!.contains(".jar") -> false
-        else                                                                        -> true
-      }
+        fileBasedIndex.processValues(
+            /* indexId = */ ImageIconIndex.NAME,
+            /* dataKey = */ file.path,
+            /* inFile = */ null,
+            /* processor = */ { _, value ->
+                icon = value
+                false
+            },
+            /* filter = */ GlobalSearchScope.projectScope(project)
+        )
+        return icon
     }
-  }
+
 }

@@ -30,9 +30,9 @@
 
     <description><![CDATA[
         <h1>Image Icon Viewer</h1>
-        <br />
+        <br/>
         <h2>Preview project images right inside the Project View or Tabs.</h2>
-        <br />
+        <br/>
         <p>This is particularly helpful when working with icons, as it gives you a preview without needing to open the
             file.</p>
         ]]></description>
@@ -45,6 +45,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <iconProvider implementation="com.mallowigi.imageicon.ImageIconProvider"/>
+        <fileBasedIndex implementation="com.mallowigi.imageicon.ImageIconIndex" id="ImageIconIndex"/>
     </extensions>
 
     <change-notes>

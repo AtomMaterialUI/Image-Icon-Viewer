@@ -28,21 +28,23 @@ import com.mallowigi.imageicon.converters.ExtendedImageConverter
 import com.mallowigi.imageicon.converters.ImageToIconConverter
 import com.mallowigi.imageicon.converters.RegularImageConverter
 import com.mallowigi.imageicon.converters.SVGImageConverter
-import java.util.Collections
+import java.util.*
 
 object ImageConverterFactory {
-  private val CONVERTERS = Collections.unmodifiableSet(
-    Sets.newHashSet(
-      RegularImageConverter(),
-      SVGImageConverter(),
-      ExtendedImageConverter()
-    )
-  )
+    val SUPPORTED_EXTENSIONS: Set<String> = setOf("svg", "jpg", "jpeg", "png", "gif", "bmp", "wbmp", "ico", "icns")
 
-  fun create(fileName: String?): ImageToIconConverter? {
-    val first = CONVERTERS.stream()
-      .filter { converter: ImageToIconConverter? -> converter!!.isAccepted(fileName) }
-      .findFirst()
-    return first.orElse(null)
-  }
+    private val CONVERTERS = Collections.unmodifiableSet(
+        Sets.newHashSet(
+            RegularImageConverter(),
+            SVGImageConverter(),
+            ExtendedImageConverter()
+        )
+    )
+
+    fun create(fileName: String?): ImageToIconConverter? {
+        val first = CONVERTERS.stream()
+            .filter { converter: ImageToIconConverter? -> converter!!.isAccepted(fileName) }
+            .findFirst()
+        return first.orElse(null)
+    }
 }
