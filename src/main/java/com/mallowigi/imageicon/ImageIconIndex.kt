@@ -6,60 +6,33 @@ import com.intellij.util.indexing.*
 import com.intellij.util.io.DataExternalizer
 import com.intellij.util.io.EnumeratorStringDescriptor
 import com.intellij.util.io.KeyDescriptor
-import java.awt.image.BufferedImage
-import java.io.*
+import java.io.DataInput
+import java.io.DataOutput
+import java.io.IOException
+import java.nio.charset.StandardCharsets
 import java.util.*
-import javax.imageio.ImageIO.read
-import javax.imageio.ImageIO.write
-import javax.swing.Icon
-import javax.swing.ImageIcon
 
-class ImageIconIndex : FileBasedIndexExtension<String, Icon>() {
-    private val myIndexer: DataIndexer<String, Icon, FileContent> = ImageIconIndexer()
+class ImageIconIndex : FileBasedIndexExtension<String, String>() {
+    private val myIndexer: DataIndexer<String, String, FileContent> = ImageIconIndexer()
 
-    private val myValueExternalizer: DataExternalizer<Icon> = object : DataExternalizer<Icon> {
-        override fun save(out: DataOutput, value: Icon) {
-            if (value is ImageIcon && value.image != null) {
-                val outputStream = ByteArrayOutputStream()
-                try {
-                    // Cast value.image to BufferedImage (required for ImageIO)
-                    val bufferedImage = value.image as? BufferedImage
-                        ?: throw IOException("Icon's image is not a BufferedImage")
-
-                    // Write the image as PNG into the outputStream
-                    write(bufferedImage, "PNG", outputStream)
-
-                    // Convert the image bytes to a byte array
-                    val imageBytes = outputStream.toByteArray()
-
-                    // Write the byte array length first
-                    out.writeInt(imageBytes.size)
-
-                    // Write the actual bytes
-                    out.write(imageBytes)
-                } catch (e: IOException) {
-                    throw IOException("Failed to serialize the Icon", e)
-                } finally {
-                    outputStream.close()
-                }
-            } else {
-                throw UnsupportedOperationException("Only ImageIcon with BufferedImage is supported for serialization")
-            }
+    private val myValueExternalizer: DataExternalizer<String> = object : DataExternalizer<String> {
+        override fun save(out: DataOutput, value: String) {
+            // Convert string to bytes
+            val bytes = value.toByteArray(StandardCharsets.UTF_8)
+            // Write length of byte array
+            out.writeInt(bytes.size)
+            // Write byte array
+            out.write(bytes)
         }
 
-        override fun read(input: DataInput): Icon {
-            val size = input.readInt() // Read the length of the byte array
-
-            // Read the image bytes
-            val imageBytes = ByteArray(size)
-            input.readFully(imageBytes)
-
-            // Convert the byte array back to a BufferedImage
-            val inputStream = ByteArrayInputStream(imageBytes)
-            val bufferedImage = read(inputStream)
-                ?: throw IOException("Failed to deserialize Icon image")
-
-            return ImageIcon(bufferedImage)
+        override fun read(input: DataInput): String {
+            // Read length of byte array
+            val length = input.readInt()
+            // Read the bytes
+            val bytes = ByteArray(length)
+            input.readFully(bytes)
+            // Convert back to a string
+            return String(bytes, StandardCharsets.UTF_8)
         }
     }
 
@@ -67,22 +40,22 @@ class ImageIconIndex : FileBasedIndexExtension<String, Icon>() {
         isValidImagePath(file) && file.extension in ImageConverterFactory.SUPPORTED_EXTENSIONS
     }
 
-    override fun getName(): ID<String, Icon> = NAME
+    override fun getName(): ID<String, String> = NAME
 
     override fun getInputFilter(): FileBasedIndex.InputFilter = myInputFilter
 
     override fun dependsOnFileContent(): Boolean = false
 
-    override fun getIndexer(): DataIndexer<String, Icon, FileContent> = myIndexer
+    override fun getIndexer(): DataIndexer<String, String, FileContent> = myIndexer
 
     override fun getKeyDescriptor(): KeyDescriptor<String> = EnumeratorStringDescriptor.INSTANCE
 
-    override fun getValueExternalizer(): DataExternalizer<Icon> = myValueExternalizer
+    override fun getValueExternalizer(): DataExternalizer<String> = myValueExternalizer
 
     override fun getVersion(): Int = VERSION
 
-    internal class ImageIconIndexer : DataIndexer<String, Icon, FileContent> {
-        override fun map(inputData: FileContent): MutableMap<String, Icon> {
+    internal class ImageIconIndexer : DataIndexer<String, String, FileContent> {
+        override fun map(inputData: FileContent): MutableMap<String, String> {
             // val project = inputData.psiFile.project
             // if (DumbService.isDumb(project)) return Collections.emptyMap()
 
@@ -94,21 +67,23 @@ class ImageIconIndex : FileBasedIndexExtension<String, Icon>() {
                 else                                                          -> {
                     val converter = ImageConverterFactory.create(file.name) ?: return Collections.emptyMap()
 
-                    val icon: Icon? = try {
-                        converter.convert(file, file.canonicalPath)
+                    val base64: String? = try {
+                        val imageWrapper = converter.getImageWrapper(file) ?: return Collections.emptyMap()
+                        converter.toBase64(imageWrapper)
                     } catch (e: IOException) {
                         thisLogger().warn(e.message)
                         null
                     }
 
-                    return icon?.let { mutableMapOf(file.path to it) } ?: Collections.emptyMap()
+                    return base64?.let { mutableMapOf(file.path to it) } ?: Collections.emptyMap()
                 }
             }
         }
     }
 
+    @Suppress("CompanionObjectInExtension")
     companion object {
-        val NAME = ID.create<String, Icon>("com.mallowigi.imageicon.imageIndex")
+        val NAME = ID.create<String, String>("com.mallowigi.imageicon.imageIndex")
         const val VERSION = 1
 
         private fun isValidImagePath(virtualFile: VirtualFile): Boolean {

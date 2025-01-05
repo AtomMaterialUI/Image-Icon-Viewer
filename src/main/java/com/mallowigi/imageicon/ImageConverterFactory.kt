@@ -31,7 +31,7 @@ import com.mallowigi.imageicon.converters.SVGImageConverter
 import java.util.*
 
 object ImageConverterFactory {
-    val SUPPORTED_EXTENSIONS: Set<String> = setOf("svg", "jpg", "jpeg", "png", "gif", "bmp", "wbmp", "ico", "icns")
+    val SUPPORTED_EXTENSIONS: Set<String> = setOf("svg")
 
     private val CONVERTERS = Collections.unmodifiableSet(
         Sets.newHashSet(

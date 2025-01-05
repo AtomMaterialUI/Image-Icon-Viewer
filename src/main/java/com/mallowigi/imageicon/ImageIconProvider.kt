@@ -27,13 +27,16 @@ import com.intellij.ide.IconProvider
 import com.intellij.openapi.project.DumbAware
 import com.intellij.psi.PsiElement
 import com.intellij.psi.search.GlobalSearchScope
+import com.intellij.util.IconUtil
 import com.intellij.util.indexing.FileBasedIndex
+import com.mallowigi.imageicon.converters.SVGImageConverter
+import com.mallowigi.imageicon.core.IconType
 import javax.swing.Icon
 
 class ImageIconProvider : IconProvider(), DumbAware {
     override fun getIcon(element: PsiElement, flags: Int): Icon? {
         val fileBasedIndex = FileBasedIndex.getInstance()
-        var icon: Icon? = null
+        var base64: String? = null
         val project = element.project
         val file = element.containingFile?.virtualFile ?: return null
 
@@ -42,12 +45,18 @@ class ImageIconProvider : IconProvider(), DumbAware {
             /* dataKey = */ file.path,
             /* inFile = */ null,
             /* processor = */ { _, value ->
-                icon = value
+                base64 = value
                 false
             },
             /* filter = */ GlobalSearchScope.projectScope(project)
         )
-        return icon
+
+        if (base64 != null) {
+            val converter = SVGImageConverter()
+            val fromBase64 = converter.fromBase64(base64, IconType.SVG, file, true) ?: return null
+            return IconUtil.createImageIcon(fromBase64.image)
+        }
+        return null
     }
 
 }
