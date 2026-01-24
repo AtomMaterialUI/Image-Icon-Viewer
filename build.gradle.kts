@@ -26,53 +26,65 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-fun properties(key: String) = project.findProperty(key).toString()
-
-fun environment(key: String) = providers.environmentVariable(key)
+fun properties(key: String) = providers.gradleProperty(key).get()
 
 fun fileProperties(key: String) = project.findProperty(key).toString().let { if (it.isNotEmpty()) file(it) else null }
 
+fun environment(key: String) = providers.environmentVariable(key)
+
 
 plugins {
-  signing
-  // Java support
   id("java")
   alias(libs.plugins.kotlin)
   alias(libs.plugins.gradleIntelliJPlugin)
   alias(libs.plugins.changelog)
-  alias(libs.plugins.qodana)
   alias(libs.plugins.detekt)
   alias(libs.plugins.ktlint)
-  alias(libs.plugins.kover)
 }
 
-group = properties("pluginGroup")
-version = properties("pluginVersion")
+// Import variables from gradle.properties file
+val pluginGroup: String by project
+val pluginName: String by project
+val pluginVersion: String by project
+val pluginSinceBuild: String by project
+val pluginUntilBuild: String by project
+val pluginVerifierIdeVersions: String by project
+
+val platformType: String by project
+val platformVersion: String by project
+val platformPlugins: String by project
+val platformDownloadSources: String by project
+
+val javaVersion: String by project
+
+group = pluginGroup
+version = pluginVersion
 val depsTwelveMonkeys = properties("depsTwelveMonkeys")
 
-// Configure project's dependencies
 repositories {
   mavenCentral()
-  maven(url = "https://dl.bintray.com/jetbrains/intellij-plugin-service")
-  maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
-  maven(url = "https://www.jetbrains.com/intellij-repository/releases")
-  maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
+  mavenLocal()
+  gradlePluginPortal()
+
+  intellijPlatform {
+    defaultRepositories()
+    jetbrainsRuntime()
+  }
 }
 
 java {
   toolchain {
-    languageVersion.set(JavaLanguageVersion.of(17))
+    languageVersion.set(JavaLanguageVersion.of(21))
   }
 }
 
 kotlin {
-  jvmToolchain(17)
+  jvmToolchain(21)
 }
 
 dependencies {
-  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.4")
+  detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.8")
   implementation("com.twelvemonkeys.imageio:imageio-core:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-metadata:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-sgi:$depsTwelveMonkeys")
@@ -84,123 +96,111 @@ dependencies {
   implementation("com.twelvemonkeys.imageio:imageio-pnm:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-tga:$depsTwelveMonkeys")
   implementation("com.twelvemonkeys.imageio:imageio-bmp:$depsTwelveMonkeys")
-}
-
-// Configure gradle-intellij-plugin plugin.
-// Read more: https://github.com/JetBrains/gradle-intellij-plugin
-intellij {
-  pluginName.set(properties("pluginName"))
-  version.set(properties("platformVersion"))
-  type.set(properties("platformType"))
-  downloadSources.set(true)
-  instrumentCode.set(true)
-  updateSinceUntilBuild.set(true)
+  // pluginName.set(properties("pluginName"))
+  // version.set(properties("platformVersion"))
+  // type.set(properties("platformType"))
+  // downloadSources.set(true)
+  // instrumentCode.set(true)
+  // updateSinceUntilBuild.set(true)
 //  localPath.set(properties("idePath"))
 
-  // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-//    plugins.set(
-//        listOf(
-//            "java",
-//            "com.intellij.CloudConfig",
-//            "Git4Idea",
-//        )
-//    )
+  intellijPlatform {
+    intellijIdeaUltimate(platformVersion) {
+      useInstaller = false
+    }
+    pluginVerifier()
+    zipSigner()
+  }
+}
+
+intellijPlatform {
+  pluginConfiguration {
+    id = pluginGroup
+    name = pluginName
+    version = pluginVersion
+
+    ideaVersion {
+      sinceBuild = pluginSinceBuild
+      untilBuild = pluginUntilBuild
+    }
+
+    changeNotes.set(provider {
+      with(changelog) {
+        renderItem(
+          (getOrNull(pluginVersion) ?: getUnreleased())
+            .withHeader(false)
+            .withEmptySections(false),
+          Changelog.OutputType.HTML,
+        )
+      }
+    })
+  }
+
+  publishing {
+    token = environment("PUBLISH_TOKEN")
+    channels = listOf(pluginVersion.split('-').getOrElse(1) { "default" }.split('.').first())
+  }
+
+  signing {
+    certificateChain = environment("CERTIFICATE_CHAIN")
+    privateKey = environment("PRIVATE_KEY")
+    password = environment("PRIVATE_KEY_PASSWORD")
+  }
+
+  pluginVerification {
+    ides {
+      recommended()
+      select {
+        sinceBuild = pluginSinceBuild
+        untilBuild = pluginUntilBuild
+      }
+    }
+  }
+
 }
 
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
   path.set("${project.projectDir}/docs/CHANGELOG.md")
-  version.set(properties("pluginVersion"))
-  header.set(provider { version.get() })
+  version.set(pluginVersion)
   itemPrefix.set("-")
   keepUnreleasedSection.set(true)
   unreleasedTerm.set("[Unreleased]")
   groups.set(listOf("Features", "Fixes", "Other", "Bump"))
 }
 
-// Configure detekt plugin.
-// Read more: https://detekt.github.io/detekt/kotlindsl.html
 detekt {
   config.setFrom("./detekt-config.yml")
   buildUponDefaultConfig = true
   autoCorrect = true
-  ignoreFailures = true
 }
 
 tasks {
+  javaVersion.let {
+    // Set the compatibility versions to 21
+    withType<JavaCompile> {
+      sourceCompatibility = "21"
+      targetCompatibility = "21"
+    }
+
+    withType<Detekt> {
+      jvmTarget = it
+      reports.xml.required.set(true)
+    }
+  }
+
   wrapper {
     gradleVersion = properties("gradleVersion")
-  }
-
-  properties("javaVersion").let {
-    // Set the compatibility versions to 1.8
-    withType<JavaCompile> {
-      sourceCompatibility = it
-      targetCompatibility = it
-    }
-    withType<KotlinCompile> {
-      kotlinOptions.jvmTarget = it
-      kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check", "-Xjvm-default=all")
-    }
-  }
-
-  withType<Detekt> {
-    jvmTarget = properties("javaVersion")
-    reports.xml.required = true
-  }
-
-  withType<Copy> {
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
-  }
-
-  sourceSets {
-    main {
-      java.srcDirs("src/main/java")
-      resources.srcDirs("src/main/resources")
-    }
-  }
-
-  patchPluginXml {
-    version = properties("pluginVersion")
-    sinceBuild = properties("pluginSinceBuild")
-    untilBuild = properties("pluginUntilBuild")
-
-    // Get the latest available change notes from the changelog file
-    changeNotes = changelog.renderItem(changelog.getLatest(), Changelog.OutputType.HTML)
-  }
-
-  runPluginVerifier {
-    ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
   }
 
   buildSearchableOptions {
     enabled = false
   }
 
-//  runIde {
-//    jvmArgs = properties("jvmArgs").split("")
-//    systemProperty("jb.service.configuration.url", properties("salesUrl"))
-//  }
-
-  signPlugin {
-    certificateChain = environment("CERTIFICATE_CHAIN")
-    privateKey = environment("PRIVATE_KEY")
-    password = environment("PRIVATE_KEY_PASSWORD")
-  }
-
-  publishPlugin {
-    token = environment("PUBLISH_TOKEN")
-    channels = listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first())
-  }
-
-  runIde {
-    ideDir = fileProperties("idePath")
-  }
-
   register("markdownToHtml") {
-    val input = File("${project.projectDir}/docs/CHANGELOG.md")
-    File("${project.projectDir}/docs/CHANGELOG.html").run {
+    val input = File("./docs/CHANGELOG.md")
+    File("./docs/CHANGELOG.html").run {
       writeText(markdownToHTML(input.readText()))
     }
   }
